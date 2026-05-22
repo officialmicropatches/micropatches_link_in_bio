@@ -144,7 +144,7 @@ In `siteConfig.json`, edit this section:
 "links": {
   "etsy": "https://www.etsy.com/shop/MicroPatches",
   "instagram": "https://www.instagram.com/micropatches",
-  "tiktok": "https://www.tiktok.com/@micropatches",
+  "tiktok": "https://www.tiktok.com/@MICRO.PATCHES",
   "facebook": "https://www.facebook.com/MicroPatches/",
   "email": "https://mail.google.com/mail/?view=cm&fs=1&to=officialmicropatches@gmail.com&su=MicroPatches%20Question",
   "futureShopify": "",

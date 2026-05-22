@@ -1,17 +1,18 @@
 :root {
-  --bg: #f5f5f2;
-  --surface: #ffffff;
-  --ink: #121212;
-  --muted: #5d5f63;
-  --line: #deded8;
-  --soft: #ecebe5;
-  --accent: #b9975b;
-  --accent-dark: #765f35;
-  --blue: #173b61;
-  --danger: #8f1f1f;
-  --shadow: 0 18px 45px rgba(18, 18, 18, 0.11);
+  --bg: #0b0b0a;
+  --surface: #171614;
+  --surface-raised: #211f1a;
+  --ink: #f6f1e7;
+  --muted: #c9c0ad;
+  --line: #3b3529;
+  --soft: #2b281f;
+  --accent: #c7a867;
+  --accent-dark: #e0c47f;
+  --blue: #d7b974;
+  --danger: #f0c260;
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
   --radius: 8px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 * {
@@ -74,13 +75,15 @@ textarea {
 }
 
 .hero {
+  background: #12110f;
   padding: 18px;
 }
 
 .announcement {
-  background: #111111;
+  background: #262217;
+  border: 1px solid #4c422c;
   border-radius: 6px;
-  color: #ffffff;
+  color: #f8edcf;
   display: none;
   font-size: 0.92rem;
   margin-bottom: 18px;
@@ -107,7 +110,7 @@ textarea {
 }
 
 .eyebrow {
-  color: var(--accent-dark);
+  color: var(--accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -145,14 +148,14 @@ h3 {
 }
 
 .tagline {
-  color: var(--blue);
+  color: var(--accent-dark);
   font-size: 1.35rem;
   font-weight: 800;
   margin-bottom: 6px;
 }
 
 .subtagline {
-  color: var(--accent-dark);
+  color: #f5e5b3;
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 14px;
@@ -186,14 +189,15 @@ h3 {
 }
 
 .primary-button {
-  background: #111111;
-  border: 1px solid #111111;
-  color: #ffffff;
+  background: var(--accent);
+  border: 1px solid #ecd58f;
+  color: #11100d;
+  box-shadow: 0 12px 24px rgba(199, 168, 103, 0.18);
 }
 
 .secondary-button,
 .link-button {
-  background: #ffffff;
+  background: #1e1c18;
   border: 1px solid var(--line);
   color: var(--ink);
 }
@@ -201,12 +205,12 @@ h3 {
 .primary-button:hover,
 .secondary-button:hover,
 .link-button:hover {
-  box-shadow: 0 10px 22px rgba(18, 18, 18, 0.12);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.32);
   transform: translateY(-1px);
 }
 
 .hero-photo {
-  background: #fbfbf8;
+  background: #11100e;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   margin: 0;
@@ -215,6 +219,7 @@ h3 {
 
 .hero-photo img {
   aspect-ratio: 4 / 5;
+  background: #f6f5f1;
   object-fit: contain;
   padding: 12px;
   width: 100%;
@@ -257,7 +262,7 @@ h3 {
 .tier-card,
 .product-card,
 .gallery-card {
-  background: #fbfbf8;
+  background: var(--surface-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 14px;
@@ -277,7 +282,7 @@ h3 {
 
 .bulk-graphic {
   align-self: stretch;
-  background: #fbfbf8;
+  background: #10100f;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   margin: 0;
@@ -300,9 +305,10 @@ h3 {
 }
 
 .notice {
-  background: #111111;
+  background: #241f16;
+  border: 1px solid #4c422c;
   border-radius: var(--radius);
-  color: #ffffff;
+  color: #f8edcf;
   display: grid;
   gap: 6px;
   margin-top: 14px;
@@ -310,7 +316,7 @@ h3 {
 }
 
 .notice span {
-  color: #e9e5dc;
+  color: #ded5c3;
 }
 
 .gallery-grid {
@@ -325,7 +331,7 @@ h3 {
 
 .gallery-card img {
   aspect-ratio: 3 / 4;
-  background: #ffffff;
+  background: #f7f6f2;
   object-fit: cover;
   width: 100%;
 }
@@ -338,14 +344,14 @@ h3 {
 }
 
 .quote-section {
-  background: #111111;
-  color: #ffffff;
+  background: #11100e;
+  color: var(--ink);
 }
 
 .quote-section .section-heading p,
 .quote-section .fine-print,
 .quote-section .form-help {
-  color: #dedbd2;
+  color: var(--muted);
 }
 
 .quote-form {
@@ -367,19 +373,24 @@ label span {
 }
 
 .quote-section label span {
-  color: #c9c2b3;
+  color: #b9ad95;
 }
 
 input,
 select,
 textarea {
-  background: #ffffff;
-  border: 1px solid #d8d8d0;
+  background: #0c0c0b;
+  border: 1px solid #4c4434;
   border-radius: 8px;
-  color: #111111;
+  color: var(--ink);
   min-height: 48px;
   padding: 11px 12px;
   width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #897f6c;
 }
 
 textarea {
@@ -409,16 +420,16 @@ button:focus {
 }
 
 .warning {
-  background: #fff8e7;
-  border: 1px solid #e0c372;
+  background: #2a2212;
+  border: 1px solid #806936;
   border-radius: var(--radius);
-  color: #3a2d0b;
+  color: #f6e4af;
   font-weight: 800;
   padding: 12px;
 }
 
 .form-status {
-  color: #fff8e7;
+  color: #f6e4af;
   font-weight: 800;
   margin-bottom: 0;
 }

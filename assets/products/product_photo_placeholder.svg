@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Product photo placeholder">
+  <rect width="900" height="1200" fill="#fbfbf8"/>
+  <rect x="80" y="90" width="740" height="900" rx="24" fill="#ffffff" stroke="#deded8" stroke-width="4"/>
+  <path d="M450 285c116 0 210 94 210 210s-94 210-210 210-210-94-210-210 94-210 210-210z" fill="#111111"/>
+  <path d="M330 475h240v70H330z" fill="#f8f8f4"/>
+  <path d="M365 410h170l52 85-52 85H365l-52-85z" fill="none" stroke="#b9975b" stroke-width="22"/>
+  <text x="450" y="820" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Add real product photo</text>
+  <text x="450" y="870" text-anchor="middle" fill="#5d5f63" font-family="Arial, Helvetica, sans-serif" font-size="26">Use the configured file name in assets/products/</text>
+</svg>

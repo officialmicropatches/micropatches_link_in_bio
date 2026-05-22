@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MicroPatches | Custom MicroKeychains and Mini Patch Inspired Products</title>
+    <meta name="description" content="MicroPatches creates premium raised texture MicroKeychains, MicroMagnets, MicroCharms, and MicroPins based on patch style artwork, badges, logos, emblems, and custom designs.">
+    <meta name="theme-color" content="#111111">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MicroPatches - Your Patch. Now Micro.">
+    <meta property="og:description" content="Premium raised texture MicroKeychains and custom mini patch inspired products for public safety, military, teams, supporters, and collectors.">
+    <meta property="og:image" content="assets/preview/social_preview.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MicroPatches - Your Patch. Now Micro.">
+    <meta name="twitter:description" content="Premium raised texture MicroKeychains and custom mini patch inspired products.">
+    <meta name="twitter:image" content="assets/preview/social_preview.svg">
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="page-shell">
+      <header class="hero" id="top">
+        <div class="announcement" data-config="announcement"></div>
+
+        <div class="brand-lockup">
+          <img class="brand-logo" data-config-img="logo" src="assets/logo/micropatches_logo.svg" alt="MicroPatches logo">
+          <div>
+            <p class="eyebrow">MicroPatches</p>
+            <h1 data-config-text="business.name">MicroPatches</h1>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="tagline" data-config-text="business.tagline">Your Patch. Now Micro.</p>
+            <p class="subtagline" data-config-text="business.secondaryTagline">Carry Your Patch. Anywhere.</p>
+            <p class="description" data-config-text="business.shortDescription">
+              Custom mini patch inspired products made for law enforcement, fire, EMS, military, public safety, supporters, and collectors. Premium raised texture products designed to carry your patch style artwork anywhere.
+            </p>
+
+            <div class="hero-actions" data-config="mainButtons"></div>
+          </div>
+
+          <figure class="hero-photo">
+            <img data-config-img="heroImage" src="assets/products/product_photo_placeholder.svg" alt="Premium raised texture MicroKeychain product photo">
+            <figcaption>Raised texture finish. Premium hardware. Built for everyday carry.</figcaption>
+          </figure>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="section card-section" id="bulk-pricing">
+          <div class="section-heading">
+            <p class="eyebrow">Bulk orders</p>
+            <h2 data-config-text="bulkPricing.headline">Bulk orders available</h2>
+            <p data-config-text="bulkPricing.description">Bulk orders are available for agencies, teams, departments, events, academies, gifts, supporters, and collectors.</p>
+          </div>
+          <div class="bulk-layout">
+            <div class="tier-grid" data-config="bulkTiers"></div>
+            <figure class="bulk-graphic" data-config="bulkGraphic"></figure>
+          </div>
+          <p class="fine-print" data-config-text="bulkPricing.note">Pricing depends on design complexity, product type, quantity, and production requirements. Submit a quote request for review.</p>
+        </section>
+
+        <section class="section" id="custom-products">
+          <div class="section-heading">
+            <p class="eyebrow">Custom products</p>
+            <h2 data-config-text="customProducts.headline">Custom product options</h2>
+            <p data-config-text="customProducts.intro">MicroPatches reviews custom requests for mini patch inspired products based on patch style artwork, badge artwork, logo artwork, emblem artwork, and other artwork references.</p>
+          </div>
+          <div class="product-grid" data-config="products"></div>
+          <div class="notice">
+            <strong data-config-text="customProducts.developmentNote">Flexible patch style products are currently in development.</strong>
+            <span data-config-text="customProducts.reviewNote">If you have a unique custom request outside the listed product types, submit it for review. MicroPatches cannot guarantee that every custom request can be produced.</span>
+          </div>
+        </section>
+
+        <section class="section" id="gallery">
+          <div class="section-heading">
+            <p class="eyebrow">Product photos</p>
+            <h2 data-config-text="gallery.headline">Real MicroPatches product photography</h2>
+            <p data-config-text="gallery.description">Actual physical MicroPatches products shown with clean studio-style product photography.</p>
+          </div>
+          <div class="gallery-grid" data-config="gallery"></div>
+        </section>
+
+        <section class="section quote-section" id="quote">
+          <div class="section-heading">
+            <p class="eyebrow">Custom quote</p>
+            <h2>Request a custom quote</h2>
+            <p data-config-text="quoteForm.intro">This is a quote request, not an automatic order. MicroPatches will review your request and follow up by email.</p>
+          </div>
+
+          <form class="quote-form" id="quoteForm" method="POST" enctype="multipart/form-data" novalidate>
+            <input type="hidden" name="_subject" id="formSubject" value="New MicroPatches Custom Quote Request">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" id="formNext" value="thankyou.html">
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-grid">
+              <label>
+                Customer name
+                <input name="customer_name" type="text" autocomplete="name" required>
+              </label>
+              <label>
+                Customer email
+                <input name="customer_email" type="email" autocomplete="email" required>
+              </label>
+              <label>
+                Phone number <span>optional</span>
+                <input name="phone" type="tel" autocomplete="tel">
+              </label>
+              <label>
+                Agency, department, team, unit, or organization
+                <input name="organization" type="text" required>
+              </label>
+              <label>
+                Product type requested
+                <select name="product_type" id="productType" required></select>
+              </label>
+              <label>
+                Quantity requested
+                <input name="quantity" type="number" min="1" inputmode="numeric" required>
+              </label>
+              <label>
+                Artwork reference type
+                <select name="artwork_reference_type" id="artworkReferenceType" required></select>
+              </label>
+              <label>
+                Do you have a photo or reference image?
+                <select name="has_reference_image" required>
+                  <option value="">Choose one</option>
+                  <option>Yes, I can upload one</option>
+                  <option>Yes, I can share a link</option>
+                  <option>Not yet</option>
+                  <option>Not sure</option>
+                </select>
+              </label>
+              <label>
+                Reference image upload <span>optional</span>
+                <input name="reference_image" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,application/pdf">
+              </label>
+              <label>
+                Reference image link <span>optional fallback</span>
+                <input name="reference_image_link" type="url" placeholder="https://">
+              </label>
+              <label>
+                Needed by date <span>optional</span>
+                <input name="needed_by_date" type="date">
+              </label>
+              <label>
+                Shipping state
+                <input name="shipping_state" type="text" maxlength="40" required>
+              </label>
+            </div>
+
+            <label>
+              Additional details
+              <textarea name="additional_details" rows="6" placeholder="Tell us about the design, product idea, quantity, timing, or any special details." required></textarea>
+            </label>
+
+            <p class="form-help" data-config-text="quoteForm.uploadHelpText">
+              Upload a photo or reference image of the patch, badge, logo, emblem, or artwork you want recreated as a MicroPatches product. This image is used only as a design reference for your requested product.
+            </p>
+
+            <label class="consent">
+              <input name="quote_request_consent" type="checkbox" required>
+              <span data-config-text="quoteForm.consentText">I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production.</span>
+            </label>
+
+            <p class="warning" data-config-text="quoteForm.warning">Do not submit payment information through this form.</p>
+
+            <button class="primary-button" type="submit">Submit quote request</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong data-config-text="business.name">MicroPatches</strong>
+          <p data-config-text="footer.text">Mini patch inspired products for public safety, military, teams, supporters, and collectors.</p>
+        </div>
+        <ul>
+          <li><a data-config-link="email" href="mailto:officialmicropatches@gmail.com">officialmicropatches@gmail.com</a></li>
+          <li data-config-text="business.madeIn">Made in USA</li>
+          <li data-config-text="business.ownerNote">Law enforcement owned and operated</li>
+        </ul>
+        <p class="privacy" data-config-text="footer.privacyNote">Information submitted through the quote request form is used only to review and respond to custom order requests. Do not submit payment information through this form.</p>
+      </footer>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

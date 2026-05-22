@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thank You | MicroPatches</title>
+    <meta name="description" content="Thank you for your MicroPatches custom quote request.">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="thank-you-page">
+    <main class="thank-you-card">
+      <img class="brand-logo" src="assets/logo/micropatches_logo.svg" alt="MicroPatches logo">
+      <p class="eyebrow">Custom quote request</p>
+      <h1>Thank you for your custom quote request.</h1>
+      <p>MicroPatches received your request and will review it. We will follow up by email as soon as possible.</p>
+      <div class="hero-actions center-actions">
+        <a class="primary-button" href="index.html">Return to main page</a>
+        <a class="secondary-button" id="thankYouEtsy" href="https://www.etsy.com/shop/MicroPatches">Visit Etsy</a>
+      </div>
+      <p class="fine-print">This page is part of the standalone MicroPatches Link in Bio project.</p>
+    </main>
+    <script>
+      fetch('siteConfig.json')
+        .then(function (response) { return response.json(); })
+        .then(function (config) {
+          if (config.links && config.links.etsy) {
+            document.getElementById('thankYouEtsy').href = config.links.etsy;
+          }
+        })
+        .catch(function () {});
+    </script>
+  </body>
+</html>

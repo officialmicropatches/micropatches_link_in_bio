@@ -1,0 +1,179 @@
+{
+  "business": {
+    "name": "MicroPatches",
+    "tagline": "Your Patch. Now Micro.",
+    "secondaryTagline": "Carry Your Patch. Anywhere.",
+    "shortDescription": "Custom mini patch inspired products made for law enforcement, fire, EMS, military, public safety, supporters, and collectors. Premium raised texture products designed to carry your patch style artwork anywhere.",
+    "email": "officialmicropatches@gmail.com",
+    "madeIn": "Made in USA",
+    "ownerNote": "Law enforcement owned and operated"
+  },
+  "seo": {
+    "pageTitle": "MicroPatches | Custom MicroKeychains and Mini Patch Inspired Products",
+    "metaDescription": "MicroPatches creates premium raised texture MicroKeychains, MicroMagnets, MicroCharms, and MicroPins based on patch style artwork, badges, logos, emblems, and custom designs.",
+    "ogTitle": "MicroPatches - Your Patch. Now Micro.",
+    "ogDescription": "Premium raised texture MicroKeychains and custom mini patch inspired products for public safety, military, teams, supporters, and collectors.",
+    "themeColor": "#111111",
+    "socialPreviewImage": "assets/preview/social_preview.svg",
+    "favicon": "assets/favicon/favicon.svg"
+  },
+  "links": {
+    "etsy": "https://www.etsy.com/shop/MicroPatches",
+    "instagram": "https://www.instagram.com/officialmicropatches",
+    "tiktok": "https://www.tiktok.com/@officialmicropatches",
+    "facebook": "https://www.facebook.com/officialmicropatches",
+    "email": "mailto:officialmicropatches@gmail.com",
+    "futureShopify": "",
+    "futureWebsite": "",
+    "futureShopifyEnabled": false,
+    "futureWebsiteEnabled": false
+  },
+  "buttons": {
+    "customQuote": "Request a Custom Quote",
+    "etsy": "Shop on Etsy",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "facebook": "Facebook",
+    "email": "Email Us",
+    "futureShopify": "Shop MicroPatches",
+    "futureWebsite": "Visit Website"
+  },
+  "announcement": {
+    "enabled": true,
+    "text": "Custom quote requests are open for agencies, teams, units, departments, gifts, supporters, and collectors."
+  },
+  "assets": {
+    "logo": "assets/logo/micropatches_logo.svg",
+    "heroImage": "assets/products/product_lafd_keychain.jpg",
+    "imageFallback": "assets/products/product_photo_placeholder.svg",
+    "bulkPricingImage": "",
+    "bulkPricingFallback": "assets/bulk_pricing/bulk_pricing_placeholder.svg"
+  },
+  "products": [
+    {
+      "name": "MicroKeychains",
+      "description": "Premium raised texture keychains based on patch style artwork, badge artwork, logo artwork, emblem artwork, and custom designs."
+    },
+    {
+      "name": "MicroMagnets",
+      "description": "Mini patch inspired magnets for display, gifts, collectors, departments, events, and supporter items."
+    },
+    {
+      "name": "MicroCharms",
+      "description": "Compact charm products for bags, gear, display pieces, and custom branded uses."
+    },
+    {
+      "name": "MicroPins",
+      "description": "Small custom pin products for agencies, teams, public safety groups, supporters, and collectors."
+    },
+    {
+      "name": "Flexible patch style products",
+      "description": "Currently in development. Availability, pricing, and production details will be reviewed before any quote is confirmed."
+    }
+  ],
+  "bulkPricing": {
+    "headline": "Bulk orders available",
+    "description": "Bulk orders are available for agencies, teams, departments, events, academies, gifts, supporters, and collectors.",
+    "tiers": [
+      {
+        "quantity": "1-9",
+        "label": "Small batch",
+        "description": "Good for samples, gifts, and individual collector orders."
+      },
+      {
+        "quantity": "10-24",
+        "label": "Team order",
+        "description": "Good for small units, squads, events, and supporter groups."
+      },
+      {
+        "quantity": "25-49",
+        "label": "Department order",
+        "description": "Good for agencies, academies, fundraisers, and group gifts."
+      },
+      {
+        "quantity": "50+",
+        "label": "Custom bulk quote",
+        "description": "Best for larger departments, events, organizations, and repeat programs."
+      }
+    ],
+    "note": "Pricing depends on design complexity, product type, quantity, and production requirements. Submit a quote request for review."
+  },
+  "gallery": {
+    "headline": "Real MicroPatches product photography",
+    "description": "Actual physical MicroPatches products shown with clean studio-style product photography.",
+    "images": [
+      {
+        "src": "assets/products/product_fhp_keychain.jpg",
+        "alt": "Florida Highway Patrol raised texture MicroKeychain with silver hardware"
+      },
+      {
+        "src": "assets/products/product_lapd_keychain.jpg",
+        "alt": "Los Angeles Police raised texture MicroKeychain with black base profile"
+      },
+      {
+        "src": "assets/products/product_lafd_keychain.jpg",
+        "alt": "Los Angeles Fire Department raised texture MicroKeychain with silver hardware"
+      },
+      {
+        "src": "assets/products/product_75th_ranger_keychain.jpg",
+        "alt": "75th Ranger Regiment raised texture MicroKeychain with custom shape"
+      },
+      {
+        "src": "assets/products/product_chicago_pd_keychain.jpg",
+        "alt": "Chicago Police raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_phoenix_pd_keychain.jpg",
+        "alt": "Phoenix Police raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_pomona_pink_keychain.jpg",
+        "alt": "Pomona Police pink patch style raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_airborne_keychain.jpg",
+        "alt": "82nd Airborne raised texture MicroKeychain"
+      }
+    ]
+  },
+  "customProducts": {
+    "headline": "Custom product options",
+    "intro": "MicroPatches reviews custom requests for mini patch inspired products based on patch style artwork, badge artwork, logo artwork, emblem artwork, and other artwork references.",
+    "developmentNote": "Flexible patch style products are currently in development.",
+    "reviewNote": "If you have a unique custom request outside the listed product types, submit it for review. MicroPatches cannot guarantee that every custom request can be produced."
+  },
+  "quoteForm": {
+    "enabled": true,
+    "provider": "formsubmit",
+    "recipientEmail": "officialmicropatches@gmail.com",
+    "subject": "New MicroPatches Custom Quote Request",
+    "successPage": "thankyou.html",
+    "intro": "This is a quote request, not an automatic order. MicroPatches will review your request and follow up by email.",
+    "warning": "Do not submit payment information through this form.",
+    "productTypes": [
+      "MicroKeychains",
+      "MicroMagnets",
+      "MicroCharms",
+      "MicroPins",
+      "Flexible patch style product currently in development",
+      "Other custom request subject to review",
+      "Not sure yet"
+    ],
+    "artworkReferenceTypes": [
+      "Existing agency or department patch design",
+      "Badge or emblem design",
+      "Military unit design",
+      "Fire department design",
+      "EMS design",
+      "Custom logo",
+      "Other artwork reference",
+      "Not sure yet"
+    ],
+    "uploadHelpText": "Upload a photo or reference image of the patch, badge, logo, emblem, or artwork you want recreated as a MicroPatches product. This image is used only as a design reference for your requested product.",
+    "consentText": "I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production."
+  },
+  "footer": {
+    "text": "Mini patch inspired products for public safety, military, teams, supporters, and collectors.",
+    "privacyNote": "Information submitted through the quote request form is used only to review and respond to custom order requests. Do not submit payment information through this form."
+  }
+}

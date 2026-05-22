@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f5f2"/>
+  <rect x="72" y="72" width="1056" height="486" rx="22" fill="#ffffff" stroke="#deded8" stroke-width="3"/>
+  <rect x="118" y="118" width="158" height="158" rx="22" fill="#111111"/>
+  <path d="M145 162h104v70H145z" fill="#ffffff"/>
+  <path d="M158 181h78v33h-78z" fill="#111111"/>
+  <path d="M166 208v-21h10l21 16 21-16h10v21h-10v-10l-16 12h-10l-16-12v10z" fill="#ffffff"/>
+  <text x="320" y="175" fill="#765f35" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">YOUR PATCH. NOW MICRO.</text>
+  <text x="320" y="275" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="800">MicroPatches</text>
+  <text x="320" y="350" fill="#173b61" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Carry Your Patch. Anywhere.</text>
+  <text x="320" y="424" fill="#5d5f63" font-family="Arial, Helvetica, sans-serif" font-size="28">Premium raised texture MicroKeychains and custom mini patch inspired products.</text>
+  <rect x="320" y="470" width="295" height="54" rx="10" fill="#111111"/>
+  <text x="350" y="506" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Request a Custom Quote</text>
+</svg>

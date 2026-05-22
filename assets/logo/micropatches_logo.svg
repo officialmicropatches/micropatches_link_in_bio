@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MicroPatches logo">
+  <rect width="512" height="512" rx="64" fill="#111111"/>
+  <path d="M80 116h352v280H80z" fill="#f8f8f4"/>
+  <path d="M112 148h288v216H112z" fill="#111111"/>
+  <path d="M146 318V194h45l66 76 66-76h43v124h-44v-63l-50 57h-31l-51-57v63z" fill="#ffffff"/>
+  <path d="M112 364h288v32H112z" fill="#b9975b"/>
+</svg>

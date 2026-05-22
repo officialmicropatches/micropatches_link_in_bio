@@ -146,6 +146,7 @@
     "enabled": true,
     "provider": "formsubmit",
     "recipientEmail": "officialmicropatches@gmail.com",
+    "endpointToken": "68de8aba668d52538d40fb476ae515fb",
     "subject": "New MicroPatches Custom Quote Request",
     "successPage": "thankyou.html",
     "intro": "This is a quote request, not an automatic order. MicroPatches will review your request and follow up by email.",

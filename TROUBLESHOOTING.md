@@ -70,6 +70,7 @@ Simple fix:
 
 - Check spam for FormSubmit and quote request emails.
 - Confirm `quoteForm.recipientEmail` is `officialmicropatches@gmail.com`.
+- Confirm `quoteForm.endpointToken` matches the token FormSubmit provided after activation.
 - Submit another test request after activation.
 
 ## Uploaded Image Does Not Arrive

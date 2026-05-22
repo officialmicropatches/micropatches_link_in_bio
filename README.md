@@ -299,8 +299,10 @@ officialmicropatches@gmail.com
 Form action:
 
 ```text
-https://formsubmit.co/officialmicropatches@gmail.com
+https://formsubmit.co/68de8aba668d52538d40fb476ae515fb
 ```
+
+The form still notifies `officialmicropatches@gmail.com`. FormSubmit provided the token above after activation so the public form action does not need to expose the email address directly.
 
 First-time activation:
 
@@ -310,8 +312,9 @@ First-time activation:
 4. Check `officialmicropatches@gmail.com`.
 5. FormSubmit should send an activation email.
 6. Click the activation link.
-7. Submit a second test request.
-8. Confirm the second request arrives as an email.
+7. Copy the token FormSubmit provides into `quoteForm.endpointToken` in `siteConfig.json`.
+8. Submit a second test request.
+9. Confirm the second request arrives as an email.
 
 Expected email subject:
 

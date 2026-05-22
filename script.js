@@ -127,7 +127,8 @@
     var next = document.getElementById('formNext');
     var status = document.getElementById('formStatus');
 
-    form.action = 'https://formsubmit.co/' + encodeURIComponent(config.quoteForm.recipientEmail);
+    var formTarget = config.quoteForm.endpointToken || encodeURIComponent(config.quoteForm.recipientEmail);
+    form.action = 'https://formsubmit.co/' + formTarget;
     if (subject) subject.value = config.quoteForm.subject;
     if (next) next.value = new URL(config.quoteForm.successPage || 'thankyou.html', window.location.href).href;
 

@@ -96,7 +96,7 @@ Current product sizes:
 
 - MicroKeychains: approximately `45 x 45 mm` (`1.77 x 1.77 in`)
 - MicroMagnets: approximately `65 x 65 mm` (`2.56 x 2.56 in`)
-- MicroCharms: approximately `25 mm` (`0.98 in`)
+- MicroCharms: approximately `25 mm` (`0.98 in`), designed for Croc-style clogs and similar vented footwear
 - MicroPins: approximately `25 mm` (`0.98 in`)
 - Flexible Patch: custom sizes available by customer request
 

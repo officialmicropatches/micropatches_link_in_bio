@@ -73,7 +73,7 @@
     var figure = document.querySelector('[data-config="bulkGraphic"]');
     if (!figure) return;
     var image = config.assets.bulkPricingImage || config.assets.bulkPricingFallback;
-    figure.innerHTML = '<img src="' + image + '" alt="Bulk pricing graphic or placeholder">';
+    figure.innerHTML = '<img src="' + image + '" alt="Custom MicroKeychain pricing schedule">';
   }
 
   function renderProducts() {

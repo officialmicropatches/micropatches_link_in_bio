@@ -46,7 +46,7 @@
     "logo": "assets/logo/micropatches_logo.png",
     "heroImage": "assets/products/product_lafd_keychain.jpg",
     "imageFallback": "assets/products/product_photo_placeholder.svg",
-    "bulkPricingImage": "",
+    "bulkPricingImage": "assets/bulk_pricing/keychain_pricing_schedule.jpg",
     "bulkPricingFallback": "assets/bulk_pricing/bulk_pricing_placeholder.svg"
   },
   "products": [
@@ -72,31 +72,46 @@
     }
   ],
   "bulkPricing": {
-    "headline": "Bulk orders available",
-    "description": "Bulk orders are available for agencies, teams, departments, events, academies, gifts, supporters, and collectors.",
+    "headline": "Custom MicroKeychain pricing",
+    "description": "Current MicroKeychain pricing for individual orders, agency orders, department orders, gifts, supporters, and collectors.",
     "tiers": [
       {
-        "quantity": "1-9",
-        "label": "Small batch",
-        "description": "Good for samples, gifts, and individual collector orders."
+        "quantity": "1",
+        "label": "$13.99 each",
+        "description": "$25.00 design and work-up fee."
       },
       {
-        "quantity": "10-24",
-        "label": "Team order",
-        "description": "Good for small units, squads, events, and supporter groups."
+        "quantity": "2-10",
+        "label": "$12.99 each",
+        "description": "$25.00 design and work-up fee."
+      },
+      {
+        "quantity": "11-24",
+        "label": "$11.99 each",
+        "description": "$25.00 design and work-up fee."
       },
       {
         "quantity": "25-49",
-        "label": "Department order",
-        "description": "Good for agencies, academies, fundraisers, and group gifts."
+        "label": "$10.99 each",
+        "description": "$25.00 design and work-up fee."
       },
       {
-        "quantity": "50+",
-        "label": "Custom bulk quote",
-        "description": "Best for larger departments, events, organizations, and repeat programs."
+        "quantity": "50-99",
+        "label": "$10.49 each",
+        "description": "Design and work-up fee waived."
+      },
+      {
+        "quantity": "100-249",
+        "label": "$9.99 each",
+        "description": "Design and work-up fee waived."
+      },
+      {
+        "quantity": "250+",
+        "label": "$8.99 each",
+        "description": "Design and work-up fee waived."
       }
     ],
-    "note": "Pricing depends on design complexity, product type, quantity, and production requirements. Submit a quote request for review."
+    "note": "The $25 design and work-up fee prepares custom artwork for MicroPatches production and serves as a non-refundable deposit. When collected, this fee is securely processed through Stripe and is waived for 50+ unit MicroKeychain orders. Do not submit payment information through the quote form."
   },
   "gallery": {
     "headline": "Real MicroPatches product photography",

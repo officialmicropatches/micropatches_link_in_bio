@@ -222,10 +222,20 @@ To use a graphic:
 3. Set:
 
 ```json
-"bulkPricingImage": "assets/bulk_pricing/your_bulk_pricing_image.png"
+"bulkPricingImage": "assets/bulk_pricing/keychain_pricing_schedule.jpg"
 ```
 
-If `bulkPricingImage` is blank, the page uses clean text-based tiers and a placeholder graphic.
+The current live pricing graphic is `assets/bulk_pricing/keychain_pricing_schedule.jpg`. If `bulkPricingImage` is blank, the page uses clean text-based tiers and a placeholder graphic.
+
+Current MicroKeychain pricing:
+
+- `1`: `$13.99 each`, `$25.00` design and work-up fee
+- `2-10`: `$12.99 each`, `$25.00` design and work-up fee
+- `11-24`: `$11.99 each`, `$25.00` design and work-up fee
+- `25-49`: `$10.99 each`, `$25.00` design and work-up fee
+- `50-99`: `$10.49 each`, design and work-up fee waived
+- `100-249`: `$9.99 each`, design and work-up fee waived
+- `250+`: `$8.99 each`, design and work-up fee waived
 
 ## Updating SEO and Social Preview
 

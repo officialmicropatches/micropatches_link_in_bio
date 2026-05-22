@@ -202,7 +202,7 @@
     configureForm();
   }
 
-  fetch('siteConfig.json')
+  fetch('siteConfig.json', { cache: 'no-store' })
     .then(function (response) { return response.json(); })
     .then(function (loadedConfig) {
       config = loadedConfig;

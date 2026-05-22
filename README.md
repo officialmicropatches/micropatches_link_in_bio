@@ -541,7 +541,7 @@ Possible future upgrades:
 - Newsletter signup
 - Order tracking page
 - Customer quote management system
-- Flexible patch style product page after launch
+- Flexible Patch product page
 
 These are future upgrades and are not required for the first launch.
 

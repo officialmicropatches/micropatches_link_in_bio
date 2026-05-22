@@ -67,8 +67,8 @@
       "description": "Small custom pin products for agencies, teams, public safety groups, supporters, and collectors."
     },
     {
-      "name": "Flexible patch style products",
-      "description": "Currently in development. Availability, pricing, and production details will be reviewed before any quote is confirmed."
+      "name": "Flexible Patch",
+      "description": "Flexible patch style products available for custom quote review based on artwork, quantity, and production requirements."
     }
   ],
   "bulkPricing": {
@@ -154,7 +154,7 @@
   "customProducts": {
     "headline": "Custom product options",
     "intro": "MicroPatches reviews custom requests for mini patch inspired products based on patch style artwork, badge artwork, logo artwork, emblem artwork, and other artwork references.",
-    "developmentNote": "Flexible patch style products are currently in development.",
+    "developmentNote": "Flexible Patch is available for custom quote review.",
     "reviewNote": "If you have a unique custom request outside the listed product types, submit it for review. MicroPatches cannot guarantee that every custom request can be produced."
   },
   "quoteForm": {
@@ -171,7 +171,7 @@
       "MicroMagnets",
       "MicroCharms",
       "MicroPins",
-      "Flexible patch style product currently in development",
+      "Flexible Patch",
       "Other custom request subject to review",
       "Not sure yet"
     ],

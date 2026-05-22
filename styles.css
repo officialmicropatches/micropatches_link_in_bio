@@ -455,24 +455,50 @@ button:focus {
 
 .thank-you-page {
   align-items: center;
+  background:
+    radial-gradient(circle at top, rgba(199, 168, 103, 0.13), transparent 34rem),
+    var(--bg);
   display: grid;
-  min-height: 100vh;
-  padding: 16px;
+  min-height: 100svh;
+  padding: 20px;
 }
 
 .thank-you-card {
   margin: 0 auto;
-  max-width: 680px;
-  padding: 24px;
+  max-width: 520px;
+  padding: 28px;
   text-align: center;
 }
 
 .thank-you-card .brand-logo {
-  margin: 0 auto 16px;
+  height: 92px;
+  margin: 0 auto 18px;
+  width: 92px;
+}
+
+.thank-you-card h1 {
+  font-size: clamp(2.35rem, 11vw, 3.25rem);
+  line-height: 0.98;
+  margin-bottom: 14px;
+}
+
+.thank-you-message {
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin: 0 auto;
+  max-width: 34rem;
 }
 
 .center-actions {
+  grid-template-columns: 1fr;
   justify-content: center;
+  margin: 24px auto 0;
+  max-width: 420px;
+}
+
+.thank-you-card .fine-print {
+  color: #b7aa91;
+  margin: 14px 0 0;
 }
 
 @media (min-width: 720px) {
@@ -519,6 +545,14 @@ button:focus {
 
   .privacy {
     grid-column: 1 / -1;
+  }
+
+  .thank-you-card {
+    padding: 34px;
+  }
+
+  .thank-you-card .center-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

@@ -52,23 +52,28 @@
   "products": [
     {
       "name": "MicroKeychains",
+      "size": "Approx. 45 x 45 mm (1.77 x 1.77 in)",
       "description": "Premium raised texture keychains based on patch style artwork, badge artwork, logo artwork, emblem artwork, and custom designs."
     },
     {
       "name": "MicroMagnets",
+      "size": "Approx. 65 x 65 mm (2.56 x 2.56 in)",
       "description": "Mini patch inspired magnets for display, gifts, collectors, departments, events, and supporter items."
     },
     {
       "name": "MicroCharms",
+      "size": "Approx. 25 mm (0.98 in)",
       "description": "Compact charm products for bags, gear, display pieces, and custom branded uses."
     },
     {
       "name": "MicroPins",
+      "size": "Approx. 25 mm (0.98 in)",
       "description": "Small custom pin products for agencies, teams, public safety groups, supporters, and collectors."
     },
     {
       "name": "Flexible Patch",
-      "description": "Flexible patch style products available for custom quote review based on artwork, quantity, and production requirements."
+      "size": "Custom sizes available by request",
+      "description": "Flexible patch style products available in various customer-preferred sizes, reviewed by artwork, quantity, and production requirements."
     }
   ],
   "bulkPricing": {
@@ -153,7 +158,7 @@
   },
   "customProducts": {
     "headline": "Custom product options",
-    "intro": "MicroPatches reviews custom requests for mini patch inspired products based on patch style artwork, badge artwork, logo artwork, emblem artwork, and other artwork references.",
+    "intro": "Choose the MicroPatches product format that fits your artwork, gear, display, or event. Standard sizes are listed below, and custom requests are reviewed before production.",
     "developmentNote": "Flexible Patch is available for custom quote review.",
     "reviewNote": "If you have a unique custom request outside the listed product types, submit it for review. MicroPatches cannot guarantee that every custom request can be produced."
   },

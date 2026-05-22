@@ -81,7 +81,8 @@
     if (!container) return;
 
     container.innerHTML = (config.products || []).map(function (product) {
-      return '<article class="product-card"><h3>' + product.name + '</h3><p>' + product.description + '</p></article>';
+      var size = product.size ? '<span class="size-badge">' + product.size + '</span>' : '';
+      return '<article class="product-card"><div class="product-card-header"><h3>' + product.name + '</h3>' + size + '</div><p>' + product.description + '</p></article>';
     }).join('');
   }
 

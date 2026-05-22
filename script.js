@@ -192,6 +192,10 @@
     document.querySelectorAll('[data-config-link="email"]').forEach(function (link) {
       link.href = config.links.email;
       link.textContent = config.business.email;
+      if (config.links.email.indexOf('http') === 0) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
     });
 
     renderButtons();

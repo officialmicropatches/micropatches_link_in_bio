@@ -137,7 +137,7 @@ In `siteConfig.json`, edit this section:
   "instagram": "https://www.instagram.com/micropatches",
   "tiktok": "https://www.instagram.com/micropatches",
   "facebook": "https://www.facebook.com/MicroPatches/",
-  "email": "mailto:officialmicropatches@gmail.com",
+  "email": "https://mail.google.com/mail/?view=cm&fs=1&to=officialmicropatches@gmail.com&su=MicroPatches%20Question",
   "futureShopify": "",
   "futureWebsite": "",
   "futureShopifyEnabled": false,

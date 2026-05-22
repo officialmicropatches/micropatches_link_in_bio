@@ -43,7 +43,7 @@
     "text": "Custom quote requests are open for agencies, teams, units, departments, gifts, supporters, and collectors."
   },
   "assets": {
-    "logo": "assets/logo/micropatches_logo.svg",
+    "logo": "assets/logo/micropatches_logo.png",
     "heroImage": "assets/products/product_lafd_keychain.jpg",
     "imageFallback": "assets/products/product_photo_placeholder.svg",
     "bulkPricingImage": "",

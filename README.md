@@ -193,7 +193,7 @@ The project is configured with optimized real MicroPatches product photos copied
 Logo file:
 
 ```text
-assets/logo/micropatches_logo.svg
+assets/logo/micropatches_logo.png
 ```
 
 To replace it:

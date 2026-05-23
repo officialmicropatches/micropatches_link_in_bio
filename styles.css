@@ -351,23 +351,6 @@ h3 {
   font-size: 0.9rem;
 }
 
-.notice {
-  background:
-    linear-gradient(135deg, rgba(199, 168, 103, 0.12), transparent 58%),
-    #241f16;
-  border: 1px solid #4c422c;
-  border-radius: var(--radius);
-  color: #f8edcf;
-  display: grid;
-  gap: 6px;
-  margin-top: 14px;
-  padding: 14px;
-}
-
-.notice span {
-  color: #ded5c3;
-}
-
 .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 18px;

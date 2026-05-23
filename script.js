@@ -169,8 +169,6 @@
       'bulkPricing.note',
       'customProducts.headline',
       'customProducts.intro',
-      'customProducts.developmentNote',
-      'customProducts.reviewNote',
       'gallery.headline',
       'gallery.description',
       'quoteForm.intro',

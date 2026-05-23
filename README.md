@@ -73,6 +73,7 @@ Correct language:
 - Custom MicroCharms
 - Custom MicroPins
 - Flexible Patch
+- Challenge Coins
 - Custom products based on patch style artwork
 - Real physical product examples
 - Real MicroPatches product photos
@@ -99,6 +100,7 @@ Current product sizes:
 - MicroCharms: approximately `25 mm` (`0.98 in`), designed for Croc-style clogs and similar vented footwear
 - MicroPins: approximately `25 mm` (`0.98 in`)
 - Flexible Patch: custom sizes available by customer request
+- Challenge Coins: custom sizes available by customer request
 
 ## Owner Editable File
 
@@ -551,6 +553,7 @@ Possible future upgrades:
 - Order tracking page
 - Customer quote management system
 - Flexible Patch product page
+- Challenge Coins product page
 
 These are future upgrades and are not required for the first launch.
 

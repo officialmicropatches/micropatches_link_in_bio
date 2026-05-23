@@ -79,19 +79,13 @@
     if (!container) return;
 
     container.innerHTML = (config.pricingTransparency.comparisonCards || []).map(function (card) {
-      return '<article class="comparison-card"><h3>' + escapeHtml(card.title) + '</h3><ul>' +
-        card.bullets.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join('') +
+      return '<article class="comparison-card ' + escapeHtml(card.type || '') + '"><h3>' + escapeHtml(card.title) + '</h3><ul>' +
+        card.bullets.map(function (item) {
+          var text = typeof item === 'string' ? item : item.text;
+          var tone = typeof item === 'string' ? '' : item.tone;
+          return '<li class="' + escapeHtml(tone || '') + '">' + escapeHtml(text) + '</li>';
+        }).join('') +
         '</ul></article>';
-    }).join('');
-  }
-
-  function renderPricingExamples() {
-    var container = document.querySelector('[data-config="pricingExamples"]');
-    if (!container) return;
-
-    container.innerHTML = (config.pricingTransparency.examples || []).map(function (example) {
-      return '<article class="example-card"><h3>' + escapeHtml(example.title) + '</h3><strong>' +
-        escapeHtml(example.total) + '</strong><p>' + escapeHtml(example.detail) + '</p></article>';
     }).join('');
   }
 
@@ -108,9 +102,10 @@
     container.innerHTML =
       '<div class="tab-list" role="tablist" aria-label="Product pricing">' +
         groups.map(function (group, index) {
+          var price = group.startingPrice ? '<span>' + escapeHtml(group.startingPrice) + '</span>' : '';
           return '<button class="tab-button' + (index === 0 ? ' is-active' : '') + '" type="button" role="tab" aria-selected="' +
             (index === 0 ? 'true' : 'false') + '" aria-controls="pricing-panel-' + index + '" id="pricing-tab-' + index +
-            '" data-pricing-tab="' + index + '">' + escapeHtml(group.name) + '</button>';
+            '" data-pricing-tab="' + index + '"><strong>' + escapeHtml(group.name) + '</strong>' + price + '</button>';
         }).join('') +
       '</div>' +
       groups.map(function (group, index) {
@@ -124,9 +119,10 @@
         var table = rows ? '<div class="pricing-table">' + rows + '</div>' : '';
         var note = group.note ? '<p class="pricing-note">' + escapeHtml(group.note) + '</p>' : '';
 
+        var headingPrice = group.startingPrice ? '<span class="panel-price">' + escapeHtml(group.startingPrice) + '</span>' : '';
         return '<article class="pricing-panel' + (index === 0 ? ' is-active' : '') + '" role="tabpanel" id="pricing-panel-' +
           index + '" aria-labelledby="pricing-tab-' + index + '">' +
-          '<div class="pricing-panel-head"><h3>' + escapeHtml(group.name) + '</h3><div class="pricing-meta">' + meta +
+          '<div class="pricing-panel-head"><h3>' + escapeHtml(group.name) + headingPrice + '</h3><div class="pricing-meta">' + meta +
           '</div><p>' + escapeHtml(group.description || '') + '</p></div>' + table + note + '</article>';
       }).join('');
 
@@ -149,17 +145,6 @@
         showTab(Number(tab.getAttribute('data-pricing-tab')));
       });
     });
-  }
-
-  function renderProducts() {
-    var container = document.querySelector('[data-config="products"]');
-    if (!container) return;
-
-    container.innerHTML = (config.products || []).map(function (product) {
-      var size = product.size ? '<span class="size-badge">' + escapeHtml(product.size) + '</span>' : '';
-      return '<article class="product-card"><h3>' + escapeHtml(product.name) + '</h3>' + size +
-        '<p>' + escapeHtml(product.description) + '</p></article>';
-    }).join('');
   }
 
   function renderGallery() {
@@ -304,8 +289,6 @@
       'pricingTransparency.note',
       'pricing.globalNote',
       'pricing.designFeeNote',
-      'customProducts.headline',
-      'customProducts.intro',
       'gallery.headline',
       'gallery.description',
       'quoteForm.intro',
@@ -328,9 +311,7 @@
     renderButtons();
     renderGallery();
     renderComparisonCards();
-    renderPricingExamples();
     renderPricingTabs();
-    renderProducts();
     renderFormOptions();
     configureForm();
   }

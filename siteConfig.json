@@ -128,6 +128,10 @@
         "alt": "Florida Highway Patrol raised texture MicroKeychain with silver hardware"
       },
       {
+        "src": "assets/products/product_chp_keychain.jpg",
+        "alt": "California Highway Patrol raised texture MicroKeychain with silver hardware"
+      },
+      {
         "src": "assets/products/product_lapd_keychain.jpg",
         "alt": "Los Angeles Police raised texture MicroKeychain with black base profile"
       },
@@ -136,12 +140,28 @@
         "alt": "Los Angeles Fire Department raised texture MicroKeychain with silver hardware"
       },
       {
+        "src": "assets/products/product_fdny_keychain.jpg",
+        "alt": "New York Fire Department raised texture MicroKeychain with red and black detail"
+      },
+      {
         "src": "assets/products/product_75th_ranger_keychain.jpg",
         "alt": "75th Ranger Regiment raised texture MicroKeychain with custom shape"
       },
       {
+        "src": "assets/products/product_broward_sheriff_keychain.jpg",
+        "alt": "Broward County Sheriff's Office raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_cook_county_sheriff_keychain.jpg",
+        "alt": "Cook County Sheriff raised texture MicroKeychain"
+      },
+      {
         "src": "assets/products/product_chicago_pd_keychain.jpg",
         "alt": "Chicago Police raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_philadelphia_pd_keychain.jpg",
+        "alt": "Philadelphia Police raised texture MicroKeychain with silver hardware"
       },
       {
         "src": "assets/products/product_phoenix_pd_keychain.jpg",
@@ -150,6 +170,26 @@
       {
         "src": "assets/products/product_pomona_pink_keychain.jpg",
         "alt": "Pomona Police pink patch style raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_los_angeles_county_sheriff_keychain.jpg",
+        "alt": "Los Angeles County Sheriff raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_tacoma_fire_keychain.jpg",
+        "alt": "Tacoma Fire Department raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_san_antonio_pd_keychain.jpg",
+        "alt": "San Antonio Police raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_memphis_pd_keychain.jpg",
+        "alt": "Memphis Police raised texture MicroKeychain"
+      },
+      {
+        "src": "assets/products/product_boston_pd_keychain.jpg",
+        "alt": "Boston Police raised texture MicroKeychain"
       },
       {
         "src": "assets/products/product_airborne_keychain.jpg",

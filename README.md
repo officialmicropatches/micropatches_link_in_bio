@@ -195,6 +195,8 @@ Use lowercase names with underscores and no spaces. File name capitalization mat
 
 If an image is missing, the page shows a clean placeholder.
 
+The product photo section is an interactive carousel. The order of product photos in `siteConfig.json` controls the carousel order. The first gallery image appears first.
+
 ## Current Image Note
 
 The project is configured with optimized real MicroPatches product photos copied from the product image folder. The original source photos remain outside this repository.

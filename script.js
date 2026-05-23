@@ -31,6 +31,18 @@
     };
   }
 
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function (character) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[character];
+    });
+  }
+
   function renderButtons() {
     var container = document.querySelector('[data-config="mainButtons"]');
     if (!container) return;
@@ -89,10 +101,66 @@
   function renderGallery() {
     var container = document.querySelector('[data-config="gallery"]');
     if (!container) return;
+    var images = config.gallery.images || [];
 
-    container.innerHTML = (config.gallery.images || []).map(function (image, index) {
-      return '<article class="gallery-card"><img data-gallery-index="' + index + '" src="' + image.src + '" alt="' + image.alt + '" loading="lazy"><p>' + image.alt + '</p></article>';
-    }).join('');
+    if (!images.length) {
+      container.innerHTML = '';
+      return;
+    }
+
+    container.classList.add('is-carousel');
+    container.innerHTML =
+      '<div class="gallery-carousel" aria-label="MicroPatches product photo carousel">' +
+        '<button class="gallery-nav gallery-prev" type="button" aria-label="Previous product photo" title="Previous product photo">&lsaquo;</button>' +
+        '<figure class="gallery-stage">' +
+          '<img class="gallery-stage-image" src="' + escapeHtml(images[0].src) + '" alt="' + escapeHtml(images[0].alt) + '">' +
+          '<figcaption>' + escapeHtml(images[0].alt) + '</figcaption>' +
+        '</figure>' +
+        '<button class="gallery-nav gallery-next" type="button" aria-label="Next product photo" title="Next product photo">&rsaquo;</button>' +
+        '<div class="gallery-thumbs" role="list" aria-label="Choose product photo">' +
+          images.map(function (image, index) {
+            return '<button class="gallery-thumb' + (index === 0 ? ' is-active' : '') + '" type="button" role="listitem" aria-label="Show photo ' + (index + 1) + '" aria-current="' + (index === 0 ? 'true' : 'false') + '" data-gallery-index="' + index + '">' +
+              '<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '" loading="lazy">' +
+            '</button>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var activeIndex = 0;
+    var stageImage = container.querySelector('.gallery-stage-image');
+    var caption = container.querySelector('.gallery-stage figcaption');
+    var thumbs = Array.prototype.slice.call(container.querySelectorAll('.gallery-thumb'));
+
+    function showImage(nextIndex) {
+      activeIndex = (nextIndex + images.length) % images.length;
+      stageImage.src = images[activeIndex].src;
+      stageImage.alt = images[activeIndex].alt;
+      caption.textContent = images[activeIndex].alt;
+      thumbs.forEach(function (thumb, index) {
+        var isActive = index === activeIndex;
+        thumb.classList.toggle('is-active', isActive);
+        thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    }
+
+    container.querySelector('.gallery-prev').addEventListener('click', function () {
+      showImage(activeIndex - 1);
+    });
+
+    container.querySelector('.gallery-next').addEventListener('click', function () {
+      showImage(activeIndex + 1);
+    });
+
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        showImage(Number(thumb.getAttribute('data-gallery-index')));
+      });
+    });
+
+    container.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') showImage(activeIndex - 1);
+      if (event.key === 'ArrowRight') showImage(activeIndex + 1);
+    });
 
     container.querySelectorAll('img').forEach(function (img) {
       img.onerror = function () {

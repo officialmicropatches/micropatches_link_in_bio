@@ -179,12 +179,6 @@
       'footer.privacyNote'
     ].forEach(setText);
 
-    var announcement = document.querySelector('[data-config="announcement"]');
-    if (announcement && config.announcement && config.announcement.enabled) {
-      announcement.textContent = config.announcement.text;
-      announcement.classList.add('is-visible');
-    }
-
     safeImage(document.querySelector('[data-config-img="logo"]'), config.assets.logo, config.business.name + ' logo');
     safeImage(document.querySelector('[data-config-img="heroImage"]'), config.assets.heroImage, 'Premium raised texture MicroKeychain product photo');
 

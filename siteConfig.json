@@ -38,10 +38,6 @@
     "futureShopify": "Shop MicroPatches",
     "futureWebsite": "Visit Website"
   },
-  "announcement": {
-    "enabled": true,
-    "text": "Custom quote requests are open for agencies, teams, units, departments, gifts, supporters, and collectors."
-  },
   "assets": {
     "logo": "assets/logo/micropatches_logo.png",
     "heroImage": "assets/products/product_lafd_keychain.jpg",

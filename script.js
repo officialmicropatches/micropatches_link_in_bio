@@ -19,18 +19,6 @@
     if (element && value) element.setAttribute('content', value);
   }
 
-  function safeImage(img, src, alt) {
-    if (!img) return;
-    var fallback = getValue('assets.imageFallback') || 'assets/products/product_photo_placeholder.svg';
-    img.src = src || fallback;
-    if (alt) img.alt = alt;
-    img.onerror = function () {
-      img.onerror = null;
-      img.src = fallback;
-      img.alt = 'Product photo placeholder. Add the real MicroPatches product photo at the configured file path.';
-    };
-  }
-
   function escapeHtml(value) {
     return String(value || '').replace(/[&<>"']/g, function (character) {
       return {
@@ -43,6 +31,18 @@
     });
   }
 
+  function safeImage(img, src, alt) {
+    if (!img) return;
+    var fallback = getValue('assets.imageFallback') || 'assets/products/product_photo_placeholder.svg';
+    img.src = src || fallback;
+    if (alt) img.alt = alt;
+    img.onerror = function () {
+      img.onerror = null;
+      img.src = fallback;
+      img.alt = 'MicroPatches product photo';
+    };
+  }
+
   function renderButtons() {
     var container = document.querySelector('[data-config="mainButtons"]');
     if (!container) return;
@@ -51,11 +51,11 @@
     var labels = config.buttons || {};
     var buttons = [
       { label: labels.customQuote || 'Request a Custom Quote', href: '#quote', className: 'primary-button' },
-      { label: labels.etsy || 'Shop on Etsy', href: links.etsy, className: 'secondary-button' },
+      { label: labels.etsy || 'Shop Etsy', href: links.etsy, className: 'secondary-button' },
       { label: labels.instagram || 'Instagram', href: links.instagram, className: 'link-button' },
       { label: labels.tiktok || 'TikTok', href: links.tiktok, className: 'link-button' },
       { label: labels.facebook || 'Facebook', href: links.facebook, className: 'link-button' },
-      { label: labels.email || 'Email Us', href: links.email, className: 'link-button' }
+      { label: labels.email || 'Email', href: links.email, className: 'link-button' }
     ];
 
     if (links.futureShopifyEnabled && links.futureShopify) {
@@ -69,23 +69,86 @@
       .filter(function (button) { return button.href; })
       .map(function (button) {
         var target = button.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
-        return '<a class="' + button.className + '" href="' + button.href + '"' + target + '>' + button.label + '</a>';
+        return '<a class="' + button.className + '" href="' + escapeHtml(button.href) + '"' + target + '>' + escapeHtml(button.label) + '</a>';
       })
       .join('');
   }
 
-  function renderBulkTiers() {
-    var container = document.querySelector('[data-config="bulkTiers"]');
+  function renderComparisonCards() {
+    var container = document.querySelector('[data-config="comparisonCards"]');
     if (!container) return;
 
-    container.innerHTML = (config.bulkPricing.tiers || []).map(function (tier) {
-      return '<article class="tier-card"><strong>' + tier.quantity + '</strong><span>' + tier.label + '</span><p>' + tier.description + '</p></article>';
+    container.innerHTML = (config.pricingTransparency.comparisonCards || []).map(function (card) {
+      return '<article class="comparison-card"><h3>' + escapeHtml(card.title) + '</h3><ul>' +
+        card.bullets.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join('') +
+        '</ul></article>';
     }).join('');
+  }
 
-    var figure = document.querySelector('[data-config="bulkGraphic"]');
-    if (!figure) return;
-    var image = config.assets.bulkPricingImage || config.assets.bulkPricingFallback;
-    figure.innerHTML = '<img src="' + image + '" alt="Custom MicroKeychain pricing schedule">';
+  function renderPricingExamples() {
+    var container = document.querySelector('[data-config="pricingExamples"]');
+    if (!container) return;
+
+    container.innerHTML = (config.pricingTransparency.examples || []).map(function (example) {
+      return '<article class="example-card"><h3>' + escapeHtml(example.title) + '</h3><strong>' +
+        escapeHtml(example.total) + '</strong><p>' + escapeHtml(example.detail) + '</p></article>';
+    }).join('');
+  }
+
+  function renderPricingTabs() {
+    var container = document.querySelector('[data-config="pricingTabs"]');
+    if (!container) return;
+
+    var groups = config.pricing.groups || [];
+    if (!groups.length) {
+      container.innerHTML = '';
+      return;
+    }
+
+    container.innerHTML =
+      '<div class="tab-list" role="tablist" aria-label="Product pricing">' +
+        groups.map(function (group, index) {
+          return '<button class="tab-button' + (index === 0 ? ' is-active' : '') + '" type="button" role="tab" aria-selected="' +
+            (index === 0 ? 'true' : 'false') + '" aria-controls="pricing-panel-' + index + '" id="pricing-tab-' + index +
+            '" data-pricing-tab="' + index + '">' + escapeHtml(group.name) + '</button>';
+        }).join('') +
+      '</div>' +
+      groups.map(function (group, index) {
+        var meta = [group.size, group.thickness].filter(Boolean).map(function (item) {
+          return '<span>' + escapeHtml(item) + '</span>';
+        }).join('');
+        var rows = (group.pricing || []).map(function (row) {
+          return '<div class="pricing-row"><strong>' + escapeHtml(row.quantity) + '</strong><span>' +
+            escapeHtml(row.price) + '</span><span>' + escapeHtml(row.fee) + '</span></div>';
+        }).join('');
+        var table = rows ? '<div class="pricing-table">' + rows + '</div>' : '';
+        var note = group.note ? '<p class="pricing-note">' + escapeHtml(group.note) + '</p>' : '';
+
+        return '<article class="pricing-panel' + (index === 0 ? ' is-active' : '') + '" role="tabpanel" id="pricing-panel-' +
+          index + '" aria-labelledby="pricing-tab-' + index + '">' +
+          '<div class="pricing-panel-head"><h3>' + escapeHtml(group.name) + '</h3><div class="pricing-meta">' + meta +
+          '</div><p>' + escapeHtml(group.description || '') + '</p></div>' + table + note + '</article>';
+      }).join('');
+
+    var tabs = Array.prototype.slice.call(container.querySelectorAll('[data-pricing-tab]'));
+    var panels = Array.prototype.slice.call(container.querySelectorAll('.pricing-panel'));
+
+    function showTab(index) {
+      tabs.forEach(function (tab, tabIndex) {
+        var isActive = tabIndex === index;
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      panels.forEach(function (panel, panelIndex) {
+        panel.classList.toggle('is-active', panelIndex === index);
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        showTab(Number(tab.getAttribute('data-pricing-tab')));
+      });
+    });
   }
 
   function renderProducts() {
@@ -93,8 +156,9 @@
     if (!container) return;
 
     container.innerHTML = (config.products || []).map(function (product) {
-      var size = product.size ? '<span class="size-badge">' + product.size + '</span>' : '';
-      return '<article class="product-card"><div class="product-card-header"><h3>' + product.name + '</h3>' + size + '</div><p>' + product.description + '</p></article>';
+      var size = product.size ? '<span class="size-badge">' + escapeHtml(product.size) + '</span>' : '';
+      return '<article class="product-card"><h3>' + escapeHtml(product.name) + '</h3>' + size +
+        '<p>' + escapeHtml(product.description) + '</p></article>';
     }).join('');
   }
 
@@ -108,18 +172,20 @@
       return;
     }
 
+    var thumbImages = images.slice(0, 4);
     container.classList.add('is-carousel');
     container.innerHTML =
       '<div class="gallery-carousel" aria-label="MicroPatches product photo carousel">' +
         '<button class="gallery-nav gallery-prev" type="button" aria-label="Previous product photo" title="Previous product photo">&lsaquo;</button>' +
         '<figure class="gallery-stage">' +
           '<img class="gallery-stage-image" src="' + escapeHtml(images[0].src) + '" alt="' + escapeHtml(images[0].alt) + '">' +
-          '<figcaption>' + escapeHtml(images[0].alt) + '</figcaption>' +
+          '<figcaption>' + escapeHtml(config.gallery.caption || images[0].alt) + '</figcaption>' +
         '</figure>' +
         '<button class="gallery-nav gallery-next" type="button" aria-label="Next product photo" title="Next product photo">&rsaquo;</button>' +
-        '<div class="gallery-thumbs" role="list" aria-label="Choose product photo">' +
-          images.map(function (image, index) {
-            return '<button class="gallery-thumb' + (index === 0 ? ' is-active' : '') + '" type="button" role="listitem" aria-label="Show photo ' + (index + 1) + '" aria-current="' + (index === 0 ? 'true' : 'false') + '" data-gallery-index="' + index + '">' +
+        '<div class="gallery-thumbs" role="list" aria-label="Choose featured product photo">' +
+          thumbImages.map(function (image, index) {
+            return '<button class="gallery-thumb' + (index === 0 ? ' is-active' : '') + '" type="button" role="listitem" aria-label="Show photo ' +
+              (index + 1) + '" aria-current="' + (index === 0 ? 'true' : 'false') + '" data-gallery-index="' + index + '">' +
               '<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '" loading="lazy">' +
             '</button>';
           }).join('') +
@@ -128,14 +194,12 @@
 
     var activeIndex = 0;
     var stageImage = container.querySelector('.gallery-stage-image');
-    var caption = container.querySelector('.gallery-stage figcaption');
     var thumbs = Array.prototype.slice.call(container.querySelectorAll('.gallery-thumb'));
 
     function showImage(nextIndex) {
       activeIndex = (nextIndex + images.length) % images.length;
       stageImage.src = images[activeIndex].src;
       stageImage.alt = images[activeIndex].alt;
-      caption.textContent = images[activeIndex].alt;
       thumbs.forEach(function (thumb, index) {
         var isActive = index === activeIndex;
         thumb.classList.toggle('is-active', isActive);
@@ -157,17 +221,8 @@
       });
     });
 
-    container.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowLeft') showImage(activeIndex - 1);
-      if (event.key === 'ArrowRight') showImage(activeIndex + 1);
-    });
-
     container.querySelectorAll('img').forEach(function (img) {
-      img.onerror = function () {
-        img.onerror = null;
-        img.src = config.assets.imageFallback;
-        img.alt = 'Product photo placeholder. Add the real MicroPatches product photo at the configured file path.';
-      };
+      safeImage(img, img.getAttribute('src'), img.getAttribute('alt'));
     });
   }
 
@@ -177,13 +232,13 @@
 
     if (productSelect) {
       productSelect.innerHTML = '<option value="">Choose one</option>' + config.quoteForm.productTypes.map(function (option) {
-        return '<option>' + option + '</option>';
+        return '<option>' + escapeHtml(option) + '</option>';
       }).join('');
     }
 
     if (artworkSelect) {
       artworkSelect.innerHTML = '<option value="">Choose one</option>' + config.quoteForm.artworkReferenceTypes.map(function (option) {
-        return '<option>' + option + '</option>';
+        return '<option>' + escapeHtml(option) + '</option>';
       }).join('');
     }
   }
@@ -201,14 +256,26 @@
     if (subject) subject.value = config.quoteForm.subject;
     if (next) next.value = new URL(config.quoteForm.successPage || 'thankyou.html', window.location.href).href;
 
+    form.addEventListener('input', function (event) {
+      event.target.classList.remove('field-error');
+    });
+
     form.addEventListener('submit', function (event) {
+      form.querySelectorAll('.field-error').forEach(function (field) {
+        field.classList.remove('field-error');
+      });
+
       if (!form.checkValidity()) {
         event.preventDefault();
-        status.textContent = 'Please complete the required fields before submitting.';
-        form.reportValidity();
+        var invalidFields = Array.prototype.slice.call(form.querySelectorAll(':invalid'));
+        invalidFields.forEach(function (field) {
+          field.classList.add('field-error');
+        });
+        if (status) status.textContent = 'Please complete the highlighted required fields before submitting.';
+        if (invalidFields[0]) invalidFields[0].focus();
         return;
       }
-      status.textContent = 'Submitting your quote request...';
+      if (status) status.textContent = 'Submitting your quote request...';
     });
   }
 
@@ -232,23 +299,22 @@
       'business.shortDescription',
       'business.madeIn',
       'business.ownerNote',
-      'bulkPricing.headline',
-      'bulkPricing.description',
-      'bulkPricing.note',
+      'pricingTransparency.headline',
+      'pricingTransparency.intro',
+      'pricingTransparency.note',
+      'pricing.globalNote',
+      'pricing.designFeeNote',
       'customProducts.headline',
       'customProducts.intro',
       'gallery.headline',
       'gallery.description',
       'quoteForm.intro',
       'quoteForm.warning',
-      'quoteForm.uploadHelpText',
       'quoteForm.consentText',
-      'footer.text',
       'footer.privacyNote'
     ].forEach(setText);
 
     safeImage(document.querySelector('[data-config-img="logo"]'), config.assets.logo, config.business.name + ' logo');
-    safeImage(document.querySelector('[data-config-img="heroImage"]'), config.assets.heroImage, 'Premium raised texture MicroKeychain product photo');
 
     document.querySelectorAll('[data-config-link="email"]').forEach(function (link) {
       link.href = config.links.email;
@@ -260,9 +326,11 @@
     });
 
     renderButtons();
-    renderBulkTiers();
-    renderProducts();
     renderGallery();
+    renderComparisonCards();
+    renderPricingExamples();
+    renderPricingTabs();
+    renderProducts();
     renderFormOptions();
     configureForm();
   }

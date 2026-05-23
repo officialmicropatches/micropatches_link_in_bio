@@ -3,17 +3,17 @@
     "name": "MicroPatches",
     "tagline": "Your Patch. Now Micro.",
     "secondaryTagline": "Carry Your Patch. Anywhere.",
-    "shortDescription": "Custom mini patch inspired products, Challenge Coins, and premium raised texture products made for law enforcement, fire, EMS, military, public safety, supporters, and collectors.",
+    "shortDescription": "Custom raised texture MicroKeychains, MicroMagnets, MicroCharms, MicroPins, Flexible Patch style products, and Challenge Coin style products for public safety, military, teams, supporters, and collectors.",
     "email": "officialmicropatches@gmail.com",
     "madeIn": "Made in USA",
     "ownerNote": "Law enforcement owned and operated"
   },
   "seo": {
-    "pageTitle": "MicroPatches | Custom MicroKeychains and Mini Patch Inspired Products",
-    "metaDescription": "MicroPatches creates premium raised texture MicroKeychains, MicroMagnets, MicroCharms, MicroPins, Flexible Patch products, and Challenge Coins based on patch style artwork, badges, logos, emblems, and custom designs.",
+    "pageTitle": "MicroPatches | Custom Raised Texture Products",
+    "metaDescription": "MicroPatches creates USA made custom raised texture MicroKeychains, MicroMagnets, MicroCharms, MicroPins, Flexible Patch style products, and Challenge Coin style products with no minimums and clear pricing.",
     "ogTitle": "MicroPatches - Your Patch. Now Micro.",
-    "ogDescription": "Premium raised texture MicroKeychains, mini patch inspired products, and Challenge Coins for public safety, military, teams, supporters, and collectors.",
-    "themeColor": "#0b0b0a",
+    "ogDescription": "No minimums, no mold fee, USA made custom raised texture products for public safety, military, teams, supporters, and collectors.",
+    "themeColor": "#080806",
     "socialPreviewImage": "assets/preview/social_preview.svg",
     "favicon": "assets/favicon/favicon.svg"
   },
@@ -30,98 +30,22 @@
   },
   "buttons": {
     "customQuote": "Request a Custom Quote",
-    "etsy": "Shop on Etsy",
+    "etsy": "Shop Etsy",
     "instagram": "Instagram",
     "tiktok": "TikTok",
     "facebook": "Facebook",
-    "email": "Email Us",
+    "email": "Email",
     "futureShopify": "Shop MicroPatches",
     "futureWebsite": "Visit Website"
   },
   "assets": {
     "logo": "assets/logo/micropatches_logo.png",
-    "heroImage": "assets/products/product_lafd_keychain.jpg",
-    "imageFallback": "assets/products/product_photo_placeholder.svg",
-    "bulkPricingImage": "assets/bulk_pricing/keychain_pricing_schedule.jpg",
-    "bulkPricingFallback": "assets/bulk_pricing/bulk_pricing_placeholder.svg"
-  },
-  "products": [
-    {
-      "name": "MicroKeychains",
-      "size": "Approx. 45 x 45 mm (1.77 x 1.77 in)",
-      "description": "Premium raised texture keychains based on patch style artwork, badge artwork, logo artwork, emblem artwork, and custom designs."
-    },
-    {
-      "name": "MicroMagnets",
-      "size": "Approx. 65 x 65 mm (2.56 x 2.56 in)",
-      "description": "Mini patch inspired magnets for display, gifts, collectors, departments, events, and supporter items."
-    },
-    {
-      "name": "MicroCharms",
-      "size": "Approx. 25 mm (0.98 in)",
-      "description": "Compact shoe charms designed for Croc-style clogs and similar vented footwear."
-    },
-    {
-      "name": "MicroPins",
-      "size": "Approx. 25 mm (0.98 in)",
-      "description": "Small custom pin products for agencies, teams, public safety groups, supporters, and collectors."
-    },
-    {
-      "name": "Flexible Patch",
-      "size": "Custom sizes available by request",
-      "description": "Flexible patch style products available in various customer-preferred sizes, reviewed by artwork, quantity, and production requirements."
-    },
-    {
-      "name": "Challenge Coins",
-      "size": "Custom sizes available by request",
-      "description": "Custom challenge coin style products available for agencies, units, teams, events, supporters, and collectors."
-    }
-  ],
-  "bulkPricing": {
-    "headline": "Custom MicroKeychain pricing",
-    "description": "Current MicroKeychain pricing for individual orders, agency orders, department orders, gifts, supporters, and collectors.",
-    "tiers": [
-      {
-        "quantity": "1",
-        "label": "$13.99 each",
-        "description": "$25.00 design and work-up fee."
-      },
-      {
-        "quantity": "2-10",
-        "label": "$12.99 each",
-        "description": "$25.00 design and work-up fee."
-      },
-      {
-        "quantity": "11-24",
-        "label": "$11.99 each",
-        "description": "$25.00 design and work-up fee."
-      },
-      {
-        "quantity": "25-49",
-        "label": "$10.99 each",
-        "description": "$25.00 design and work-up fee."
-      },
-      {
-        "quantity": "50-99",
-        "label": "$10.49 each",
-        "description": "Design and work-up fee waived."
-      },
-      {
-        "quantity": "100-249",
-        "label": "$9.99 each",
-        "description": "Design and work-up fee waived."
-      },
-      {
-        "quantity": "250+",
-        "label": "$8.99 each",
-        "description": "Design and work-up fee waived."
-      }
-    ],
-    "note": "The $25 design and work-up fee prepares custom artwork for MicroPatches production and serves as a non-refundable deposit. When collected, this fee is securely processed through Stripe and is waived for 50+ unit MicroKeychain orders. Do not submit payment information through the quote form."
+    "imageFallback": "assets/products/product_photo_placeholder.svg"
   },
   "gallery": {
-    "headline": "Real MicroPatches product photography",
-    "description": "Actual physical MicroPatches products shown with clean studio-style product photography.",
+    "headline": "Product detail, up close",
+    "description": "Real raised texture MicroPatches products with premium detail.",
+    "caption": "Real raised texture MicroPatches products with premium detail.",
     "images": [
       {
         "src": "assets/products/product_fhp_keychain.jpg",
@@ -197,9 +121,199 @@
       }
     ]
   },
+  "pricingTransparency": {
+    "headline": "Why MicroPatches Pricing Is Different",
+    "intro": "Traditional production can make sense for large bulk runs. MicroPatches is built to be cheaper and simpler for small custom orders, while still offering aggressive quantity pricing for larger orders.",
+    "comparisonCards": [
+      {
+        "title": "Typical PVC Patch Companies",
+        "bullets": [
+          "Often priced for bulk orders",
+          "May require minimum quantities",
+          "May require mold or setup fees",
+          "Lower unit prices usually depend on larger quantities",
+          "Design changes may require a new mold",
+          "Many options are produced overseas",
+          "Shipping time may be longer",
+          "Final cost can depend on quantity, mold, backing, size, shipping, and production method"
+        ]
+      },
+      {
+        "title": "MicroPatches",
+        "bullets": [
+          "No minimum order",
+          "Flat $25 design and work up fee",
+          "No mold fee",
+          "No overseas shipping",
+          "USA made",
+          "No hidden fees",
+          "Custom raised texture products",
+          "Built for one offs, small batches, gifts, collectors, teams, units, and departments",
+          "Clear unit pricing plus the design fee"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "title": "One custom MicroKeychain",
+        "total": "Estimated starting total: $38.99",
+        "detail": "$13.99 unit price plus $25 design and work up fee, before shipping or taxes if applicable."
+      },
+      {
+        "title": "One full size replica Flexible Patch style product",
+        "total": "Estimated starting total: $42.99",
+        "detail": "$17.99 unit price plus $25 design and work up fee, before shipping or taxes if applicable."
+      },
+      {
+        "title": "Five full size replica Flexible Patch style products",
+        "total": "Estimated starting total: $109.95",
+        "detail": "5 x $16.99 = $84.95 plus $25 design and work up fee, before shipping or taxes if applicable."
+      }
+    ],
+    "note": "The design and work up fee is flat per custom design, not per item. Ordering more than one item spreads that design cost across the order. For qualifying larger orders, the design fee may be waived based on the published pricing tier."
+  },
+  "pricing": {
+    "globalNote": "All pricing is estimate based and subject to final artwork review. Custom requests may vary by size, thickness, artwork detail, quantity, and production requirements. Do not submit payment information through the quote form.",
+    "designFeeNote": "The $25 design and work up fee prepares custom artwork for MicroPatches production and serves as a non refundable deposit. The fee is flat per custom design, not per item. The fee may be waived for qualifying larger orders. Do not submit payment information through the quote form.",
+    "groups": [
+      {
+        "name": "MicroKeychains",
+        "size": "45 x 45 mm / 1.77 x 1.77 in",
+        "description": "Premium raised texture keychains based on patch style artwork, badge artwork, logo artwork, emblem artwork, and custom designs.",
+        "pricing": [
+          { "quantity": "1", "price": "$13.99 each", "fee": "$25 design fee" },
+          { "quantity": "2-10", "price": "$12.99 each", "fee": "$25 design fee" },
+          { "quantity": "11-24", "price": "$11.99 each", "fee": "$25 design fee" },
+          { "quantity": "25-49", "price": "$10.99 each", "fee": "$25 design fee" },
+          { "quantity": "50-99", "price": "$10.49 each", "fee": "Design fee waived" },
+          { "quantity": "100-249", "price": "$9.99 each", "fee": "Design fee waived" },
+          { "quantity": "250+", "price": "$8.99 each", "fee": "Design fee waived" }
+        ]
+      },
+      {
+        "name": "MicroMagnets",
+        "size": "65 x 65 mm / 2.56 x 2.56 in",
+        "description": "Mini patch inspired magnets for display, gifts, departments, teams, events, and collectors.",
+        "pricing": [
+          { "quantity": "1", "price": "$14.99 each", "fee": "$25 design fee" },
+          { "quantity": "2-10", "price": "$13.99 each", "fee": "$25 design fee" },
+          { "quantity": "11-24", "price": "$12.99 each", "fee": "$25 design fee" },
+          { "quantity": "25-49", "price": "$11.99 each", "fee": "$25 design fee" },
+          { "quantity": "50-99", "price": "$11.49 each", "fee": "Design fee waived" },
+          { "quantity": "100-249", "price": "$10.99 each", "fee": "Design fee waived" },
+          { "quantity": "250+", "price": "$9.99 each", "fee": "Design fee waived" }
+        ]
+      },
+      {
+        "name": "MicroPins",
+        "size": "25 mm / 0.98 in",
+        "description": "Small custom pin products for agencies, teams, units, public safety groups, supporters, and collectors.",
+        "pricing": [
+          { "quantity": "1", "price": "$9.99 each", "fee": "$25 design fee" },
+          { "quantity": "2-10", "price": "$8.99 each", "fee": "$25 design fee" },
+          { "quantity": "11-24", "price": "$7.99 each", "fee": "$25 design fee" },
+          { "quantity": "25-49", "price": "$6.99 each", "fee": "$25 design fee" },
+          { "quantity": "50-99", "price": "$6.49 each", "fee": "Design fee waived" },
+          { "quantity": "100-249", "price": "$5.99 each", "fee": "Design fee waived" },
+          { "quantity": "250+", "price": "$4.99 each", "fee": "Design fee waived" }
+        ]
+      },
+      {
+        "name": "MicroCharms",
+        "size": "25 mm / 0.98 in",
+        "description": "Compact shoe charms for Croc style clogs and similar vented footwear.",
+        "pricing": [
+          { "quantity": "1", "price": "$9.99 each", "fee": "$25 design fee" },
+          { "quantity": "2-10", "price": "$8.99 each", "fee": "$25 design fee" },
+          { "quantity": "11-24", "price": "$7.99 each", "fee": "$25 design fee" },
+          { "quantity": "25-49", "price": "$6.99 each", "fee": "$25 design fee" },
+          { "quantity": "50-99", "price": "$6.49 each", "fee": "Design fee waived" },
+          { "quantity": "100-249", "price": "$5.99 each", "fee": "Design fee waived" },
+          { "quantity": "250+", "price": "$4.99 each", "fee": "Design fee waived" }
+        ]
+      },
+      {
+        "name": "Flexible Patch",
+        "thickness": "Usually around 2 mm to 3 mm",
+        "description": "Custom flexible, durable, raised texture patch style products. These are not PVC patches and are not embroidered patches.",
+        "pricing": [
+          { "quantity": "Small 1", "price": "$9.99 each", "fee": "$25 design fee" },
+          { "quantity": "Small 2-10", "price": "$8.99 each", "fee": "$25 design fee" },
+          { "quantity": "Small 11-24", "price": "$7.99 each", "fee": "$25 design fee" },
+          { "quantity": "Small 25-49", "price": "$6.99 each", "fee": "$25 design fee" },
+          { "quantity": "Small 50-99", "price": "$5.99 each", "fee": "Design fee waived" },
+          { "quantity": "Small 100-249", "price": "$4.99 each", "fee": "Design fee waived" },
+          { "quantity": "Small 250+", "price": "$3.99 each", "fee": "Design fee waived" },
+          { "quantity": "Standard 1", "price": "$14.99 each", "fee": "$25 design fee" },
+          { "quantity": "Standard 2-10", "price": "$13.99 each", "fee": "$25 design fee" },
+          { "quantity": "Standard 11-24", "price": "$12.99 each", "fee": "$25 design fee" },
+          { "quantity": "Standard 25-49", "price": "$11.99 each", "fee": "$25 design fee" },
+          { "quantity": "Standard 50-99", "price": "$9.99 each", "fee": "Design fee waived" },
+          { "quantity": "Standard 100-249", "price": "$8.99 each", "fee": "Design fee waived" },
+          { "quantity": "Standard 250+", "price": "$7.99 each", "fee": "Design fee waived" },
+          { "quantity": "Full size 1", "price": "$17.99 each", "fee": "$25 design fee" },
+          { "quantity": "Full size 2-10", "price": "$16.99 each", "fee": "$25 design fee" },
+          { "quantity": "Full size 11-24", "price": "$15.99 each", "fee": "$25 design fee" },
+          { "quantity": "Full size 25-49", "price": "$14.99 each", "fee": "$25 design fee" },
+          { "quantity": "Full size 50-99", "price": "$12.99 each", "fee": "Design fee waived" },
+          { "quantity": "Full size 100-249", "price": "$10.99 each", "fee": "Design fee waived" },
+          { "quantity": "Full size 250+", "price": "$8.99 each", "fee": "Design fee waived" },
+          { "quantity": "Oversized", "price": "Custom quote", "fee": "Quoted by size, detail, backing, and quantity" }
+        ],
+        "note": "Small: 2 x 2 in to 3 x 2 in. Standard Uniform: 3 x 3 in to 4 x 5 in. Full Size Replica: made 1 to 1 with the original patch being modeled. Oversized Flexible Patch style products require a custom quote."
+      },
+      {
+        "name": "Challenge Coins",
+        "size": "1.75 in to 2.5 in",
+        "description": "Custom raised texture challenge coin style products for agencies, units, teams, events, supporters, and collectors.",
+        "pricing": [
+          { "quantity": "1", "price": "$19.99 each", "fee": "$25 design fee" },
+          { "quantity": "2-10", "price": "$18.99 each", "fee": "$25 design fee" },
+          { "quantity": "11-24", "price": "$17.99 each", "fee": "$25 design fee" },
+          { "quantity": "25-49", "price": "$16.99 each", "fee": "$25 design fee" },
+          { "quantity": "50-99", "price": "$14.99 each", "fee": "Design fee waived" },
+          { "quantity": "100-249", "price": "$12.99 each", "fee": "Design fee waived" },
+          { "quantity": "250+", "price": "$10.99 each", "fee": "Design fee waived" }
+        ],
+        "note": "Challenge Coin style products are custom raised texture products. They are not described as metal coins unless approved later."
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "MicroKeychains",
+      "size": "45 x 45 mm / 1.77 x 1.77 in",
+      "description": "Premium raised texture keychains based on patch style artwork, badge artwork, logo artwork, emblem artwork, and custom designs."
+    },
+    {
+      "name": "MicroMagnets",
+      "size": "65 x 65 mm / 2.56 x 2.56 in",
+      "description": "Mini patch inspired magnets for display, gifts, departments, events, and collectors."
+    },
+    {
+      "name": "MicroCharms",
+      "size": "25 mm / 0.98 in",
+      "description": "Compact shoe charms for Croc style clogs and similar vented footwear."
+    },
+    {
+      "name": "MicroPins",
+      "size": "25 mm / 0.98 in",
+      "description": "Small custom pin products for agencies, teams, public safety groups, supporters, and collectors."
+    },
+    {
+      "name": "Flexible Patch Style Products",
+      "size": "Approx. 2 mm to 3 mm thick",
+      "description": "Custom flexible, durable, raised texture patch style products for hats, uniforms, vests, backpacks, duffel bags, patch walls, and display boards."
+    },
+    {
+      "name": "Challenge Coin Style Products",
+      "size": "1.75 in to 2.5 in",
+      "description": "Custom raised texture challenge coin style products for agencies, units, teams, events, supporters, and collectors."
+    }
+  ],
   "customProducts": {
     "headline": "Custom product options",
-    "intro": "Choose the MicroPatches product format that fits your artwork, gear, display, or event. Standard sizes are listed below, and custom requests are reviewed before production."
+    "intro": "Choose the MicroPatches product format that fits your artwork, gear, display, or event."
   },
   "quoteForm": {
     "enabled": true,
@@ -216,25 +330,21 @@
       "MicroCharms",
       "MicroPins",
       "Flexible Patch",
-      "Challenge Coins",
-      "Other custom request subject to review",
-      "Not sure yet"
+      "Challenge Coin",
+      "Other custom request"
     ],
     "artworkReferenceTypes": [
-      "Existing agency or department patch design",
-      "Badge or emblem design",
-      "Military unit design",
-      "Fire department design",
-      "EMS design",
-      "Custom logo",
-      "Other artwork reference",
-      "Not sure yet"
+      "Patch",
+      "Badge",
+      "Logo",
+      "Emblem",
+      "Unit artwork",
+      "Existing product photo",
+      "Other"
     ],
-    "uploadHelpText": "Upload a photo or reference image of the patch, badge, logo, emblem, or artwork you want recreated as a MicroPatches product. This image is used only as a design reference for your requested product.",
     "consentText": "I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production."
   },
   "footer": {
-    "text": "Mini patch inspired products and Challenge Coins for public safety, military, teams, supporters, and collectors.",
     "privacyNote": "Information submitted through the quote request form is used only to review and respond to custom order requests. Do not submit payment information through this form."
   }
 }

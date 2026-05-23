@@ -99,8 +99,8 @@ Current product sizes:
 - MicroMagnets: approximately `65 x 65 mm` (`2.56 x 2.56 in`)
 - MicroCharms: approximately `25 mm` (`0.98 in`), designed for Croc-style clogs and similar vented footwear
 - MicroPins: approximately `25 mm` (`0.98 in`)
-- Flexible Patch: custom sizes available by customer request
-- Challenge Coins: custom sizes available by customer request
+- Flexible Patch Style Products: usually around `2 mm` to `3 mm` thick, with sizes based on the selected product category
+- Challenge Coin Style Products: approximately `1.75 in` to `2.5 in`
 
 ## Owner Editable File
 
@@ -123,11 +123,10 @@ Open that file when you need to update:
 - Future Shopify link
 - Future website link
 - Button labels
-- Announcement banner
 - Product names
 - Product descriptions
-- Bulk pricing text
-- Bulk pricing image path
+- Pricing transparency text
+- Product pricing tabs
 - Logo image path
 - Product image paths
 - Social preview image path
@@ -176,12 +175,22 @@ assets/products/
 The current page expects these file names:
 
 - `product_fhp_keychain.jpg`
+- `product_chp_keychain.jpg`
 - `product_lapd_keychain.jpg`
 - `product_lafd_keychain.jpg`
+- `product_fdny_keychain.jpg`
 - `product_75th_ranger_keychain.jpg`
+- `product_broward_sheriff_keychain.jpg`
+- `product_cook_county_sheriff_keychain.jpg`
 - `product_chicago_pd_keychain.jpg`
+- `product_philadelphia_pd_keychain.jpg`
 - `product_phoenix_pd_keychain.jpg`
 - `product_pomona_pink_keychain.jpg`
+- `product_los_angeles_county_sheriff_keychain.jpg`
+- `product_tacoma_fire_keychain.jpg`
+- `product_san_antonio_pd_keychain.jpg`
+- `product_memphis_pd_keychain.jpg`
+- `product_boston_pd_keychain.jpg`
 - `product_airborne_keychain.jpg`
 
 Recommended product image size:
@@ -224,31 +233,18 @@ Recommended logo size:
 - `512 x 512 px`
 - `.png` or `.svg`
 
-## Updating the Bulk Pricing Graphic
+## Updating Pricing
 
-The site can show either text pricing tiers or a bulk pricing image.
+Pricing is controlled in `siteConfig.json`.
 
-To use a graphic:
+Edit:
 
-1. Add the image to `assets/bulk_pricing/`.
-2. Open `siteConfig.json`.
-3. Set:
+- `pricingTransparency` for the comparison cards and example totals
+- `pricing.globalNote` for the overall estimate note
+- `pricing.designFeeNote` for the design and work-up fee explanation
+- `pricing.groups` for each product tab and its pricing rows
 
-```json
-"bulkPricingImage": "assets/bulk_pricing/keychain_pricing_schedule.jpg"
-```
-
-The current live pricing graphic is `assets/bulk_pricing/keychain_pricing_schedule.jpg`. If `bulkPricingImage` is blank, the page uses clean text-based tiers and a placeholder graphic.
-
-Current MicroKeychain pricing:
-
-- `1`: `$13.99 each`, `$25.00` design and work-up fee
-- `2-10`: `$12.99 each`, `$25.00` design and work-up fee
-- `11-24`: `$11.99 each`, `$25.00` design and work-up fee
-- `25-49`: `$10.99 each`, `$25.00` design and work-up fee
-- `50-99`: `$10.49 each`, design and work-up fee waived
-- `100-249`: `$9.99 each`, design and work-up fee waived
-- `250+`: `$8.99 each`, design and work-up fee waived
+The public page shows pricing in compact tabs. The default open tab is MicroKeychains.
 
 ## Updating SEO and Social Preview
 

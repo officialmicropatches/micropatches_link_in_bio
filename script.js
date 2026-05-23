@@ -82,8 +82,7 @@
       return '<article class="comparison-card ' + escapeHtml(card.type || '') + '"><h3>' + escapeHtml(card.title) + '</h3><ul>' +
         card.bullets.map(function (item) {
           var text = typeof item === 'string' ? item : item.text;
-          var tone = typeof item === 'string' ? '' : item.tone;
-          return '<li class="' + escapeHtml(tone || '') + '">' + escapeHtml(text) + '</li>';
+          return '<li>' + escapeHtml(text) + '</li>';
         }).join('') +
         '</ul></article>';
     }).join('');

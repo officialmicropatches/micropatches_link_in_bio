@@ -87,6 +87,7 @@ textarea {
   align-items: center;
   display: flex;
   gap: 11px;
+  min-height: 46px;
 }
 
 .brand-bar > div {
@@ -117,7 +118,7 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.9rem, 8.5vw, 3.8rem);
+  font-size: clamp(1.85rem, 8.3vw, 3.65rem);
   line-height: 0.92;
   margin: 0;
 }
@@ -346,13 +347,9 @@ h3 {
 
 .comparison-grid {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(2, minmax(245px, 1fr));
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 12px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scroll-snap-type: x proximity;
-  scrollbar-color: var(--gold) transparent;
 }
 
 .comparison-card,
@@ -363,43 +360,25 @@ h3 {
 }
 
 .comparison-card {
-  padding: 12px;
-  scroll-snap-align: start;
-}
-
-.comparison-card.competitor {
-  border-color: rgba(226, 91, 82, 0.35);
-}
-
-.comparison-card.micropatches {
-  border-color: rgba(86, 190, 127, 0.42);
+  min-width: 0;
+  padding: 9px;
 }
 
 .comparison-card h3 {
   color: var(--ink);
-  margin: 0 0 6px;
+  font-size: 0.86rem;
+  margin: 0 0 7px;
 }
 
 .comparison-card ul,
 .pricing-panel ul {
   color: var(--muted);
   display: grid;
-  font-size: 0.88rem;
-  gap: 5px;
+  font-size: 0.76rem;
+  gap: 6px;
+  line-height: 1.28;
   margin: 0;
-  padding-left: 18px;
-}
-
-.comparison-card li.negative {
-  color: #ff9d95;
-}
-
-.comparison-card li.positive {
-  color: #8be0a8;
-}
-
-.comparison-card li.neutral {
-  color: var(--muted);
+  padding-left: 14px;
 }
 
 .fine-print,
@@ -477,10 +456,10 @@ h3 {
 }
 
 .panel-price {
-  background: rgba(86, 190, 127, 0.12);
-  border: 1px solid rgba(86, 190, 127, 0.32);
+  background: rgba(214, 182, 106, 0.12);
+  border: 1px solid rgba(214, 182, 106, 0.34);
   border-radius: 999px;
-  color: #8be0a8;
+  color: var(--soft-gold);
   font-size: 0.74rem;
   font-weight: 900;
   padding: 4px 8px;
@@ -750,7 +729,6 @@ button:focus {
 
   .comparison-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    overflow: visible;
   }
 
   .tab-list {

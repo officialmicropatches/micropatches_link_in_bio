@@ -3,14 +3,14 @@
     "name": "MicroPatches",
     "tagline": "Your Patch. Now Micro.",
     "secondaryTagline": "Carry Your Patch. Anywhere.",
-    "shortDescription": "Custom raised texture MicroKeychains, MicroMagnets, MicroCharms, MicroPins, Flexible Patch style products, and Challenge Coin style products for public safety, military, teams, supporters, and collectors.",
+    "shortDescription": "Custom raised texture products for public safety, military, teams, supporters, and collectors.",
     "email": "officialmicropatches@gmail.com",
     "madeIn": "Made in USA",
     "ownerNote": "Law enforcement owned and operated"
   },
   "seo": {
     "pageTitle": "MicroPatches | Custom Raised Texture Products",
-    "metaDescription": "MicroPatches creates USA made custom raised texture MicroKeychains, MicroMagnets, MicroCharms, MicroPins, Flexible Patch style products, and Challenge Coin style products with no minimums and clear pricing.",
+    "metaDescription": "MicroPatches creates USA made custom raised texture products with no minimums, no mold fee, and clear pricing.",
     "ogTitle": "MicroPatches - Your Patch. Now Micro.",
     "ogDescription": "No minimums, no mold fee, USA made custom raised texture products for public safety, military, teams, supporters, and collectors.",
     "themeColor": "#080806",
@@ -44,8 +44,8 @@
   },
   "gallery": {
     "headline": "Product detail, up close",
-    "description": "Real raised texture MicroPatches products with premium detail.",
-    "caption": "Real raised texture MicroPatches products with premium detail.",
+    "description": "Real raised texture product photography with premium detail.",
+    "caption": "Real raised texture product photography with premium detail.",
     "images": [
       {
         "src": "assets/products/product_fhp_keychain.jpg",
@@ -122,44 +122,37 @@
     ]
   },
   "pricingTransparency": {
-    "headline": "Why MicroPatches Pricing Is Different",
-    "intro": "Traditional production can make sense for large bulk runs. MicroPatches is built to be cheaper and simpler for small custom orders, while still offering aggressive quantity pricing for larger orders.",
+    "headline": "How Pricing Works",
+    "intro": "A low-minimum, USA-made production model with clear unit pricing and a flat design work-up fee.",
     "comparisonCards": [
       {
-        "title": "Typical Competitors",
-        "type": "competitor",
+        "title": "Traditional Custom Ordering",
+        "type": "",
         "bullets": [
-          { "text": "Often priced for bulk orders", "tone": "negative" },
-          { "text": "May require minimum quantities", "tone": "negative" },
-          { "text": "May require mold or setup fees", "tone": "negative" },
-          { "text": "Lower unit prices usually depend on larger quantities", "tone": "neutral" },
-          { "text": "Design changes may require a new mold", "tone": "negative" },
-          { "text": "Many options are produced overseas", "tone": "negative" },
-          { "text": "Shipping time may be longer", "tone": "negative" },
-          { "text": "Final cost can depend on quantity, mold, backing, size, shipping, and production method", "tone": "negative" }
+          { "text": "Bulk pricing is often the standard model", "tone": "neutral" },
+          { "text": "Minimum quantities may apply", "tone": "neutral" },
+          { "text": "Mold or setup costs may be separate", "tone": "neutral" },
+          { "text": "Production may involve overseas timelines", "tone": "neutral" },
+          { "text": "Final cost can vary by options and quantity", "tone": "neutral" }
         ]
       },
       {
         "title": "MicroPatches",
-        "type": "micropatches",
+        "type": "",
         "bullets": [
-          { "text": "No minimum order", "tone": "positive" },
-          { "text": "Flat $25 design and work up fee", "tone": "positive" },
-          { "text": "No mold fee", "tone": "positive" },
-          { "text": "No overseas shipping", "tone": "positive" },
-          { "text": "USA made", "tone": "positive" },
-          { "text": "No hidden fees", "tone": "positive" },
-          { "text": "Custom raised texture products", "tone": "positive" },
-          { "text": "Built for one offs, small batches, gifts, collectors, teams, units, and departments", "tone": "positive" },
-          { "text": "Clear unit pricing plus the design fee", "tone": "positive" }
+          { "text": "No minimum order", "tone": "neutral" },
+          { "text": "Flat $25 design and work-up fee", "tone": "neutral" },
+          { "text": "No mold fee", "tone": "neutral" },
+          { "text": "USA made production", "tone": "neutral" },
+          { "text": "Clear unit pricing by product and quantity", "tone": "neutral" }
         ]
       }
     ],
-    "note": "The design and work up fee is flat per custom design, not per item. Pricing tabs below show unit pricing and when the design fee may be waived."
+    "note": "The design and work-up fee is flat per custom design, not per item. Pricing tabs below show unit pricing and when the fee may be waived."
   },
   "pricing": {
-    "globalNote": "All pricing is estimate based and subject to final artwork review. Custom requests may vary by size, thickness, artwork detail, quantity, and production requirements. Do not submit payment information through the quote form.",
-    "designFeeNote": "The $25 design and work up fee prepares custom artwork for MicroPatches production and serves as a non refundable deposit. The fee is flat per custom design, not per item. The fee may be waived for qualifying larger orders. Do not submit payment information through the quote form.",
+    "globalNote": "Pricing is estimate based and subject to final artwork review. Custom requests may vary by size, detail, quantity, and production requirements.",
+    "designFeeNote": "The $25 design work-up fee is flat per custom design, not per item. It may be waived for qualifying larger orders. Do not submit payment information through the quote form.",
     "groups": [
       {
         "name": "MicroKeychains",

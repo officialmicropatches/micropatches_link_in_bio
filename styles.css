@@ -501,8 +501,30 @@ input:focus, select:focus, textarea:focus {
   margin: 0;
 }
 
-.honeypot {
-  display: none;
+.form-success {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--gold-bright);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  color: var(--gold-bright);
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.form-success p {
+  margin: 0;
+}
+
+.form-fallback {
+  font-size: 0.8rem;
+  color: var(--text-muted, #8b8880);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.form-fallback a {
+  color: var(--gold-bright);
 }
 
 /* Footer */

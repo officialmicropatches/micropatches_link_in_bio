@@ -67,11 +67,13 @@ button, input, select, textarea {
 .site-header {
   padding: 20px 0;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .header-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -96,6 +98,7 @@ button, input, select, textarea {
   border-radius: var(--radius);
   padding: 32px 20px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .hero-inner {
@@ -145,6 +148,7 @@ button, input, select, textarea {
   padding: 0;
   display: grid;
   gap: 8px;
+  justify-items: center;
 }
 
 .trust-indicators li {
@@ -201,6 +205,7 @@ button, input, select, textarea {
   border-radius: var(--radius);
   padding: 24px 20px;
   margin-bottom: 32px;
+  text-align: center;
 }
 
 .pricing-label {
@@ -280,6 +285,7 @@ button, input, select, textarea {
   border-radius: var(--radius);
   padding: 24px 20px;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .cta-label {
@@ -460,12 +466,14 @@ input:focus, select:focus, textarea:focus {
   border-radius: var(--radius);
   padding: 20px;
   margin-top: 24px;
+  text-align: center;
 }
 
 .footer-content {
   display: grid;
   gap: 6px;
   margin-bottom: 12px;
+  justify-items: center;
 }
 
 .site-footer strong {

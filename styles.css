@@ -526,20 +526,20 @@ input:focus, select:focus, textarea:focus {
     padding: 12px 12px 24px;
   }
 
+  .cta-section {
+    padding: 16px 12px;
+  }
+
+  .pricing-simple {
+    padding: 16px 12px;
+  }
+
+  .hero-section {
+    padding: 24px 12px;
+  }
+
   input, select, textarea {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  label {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .form-section {
-    width: 100%;
-    max-width: 100%;
+    box-sizing: border-box !important;
   }
 }
 

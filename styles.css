@@ -358,6 +358,7 @@ label span.optional {
 }
 
 input, select, textarea {
+  width: 100%;
   background: var(--field);
   border: 1px solid var(--line);
   border-radius: 8px;

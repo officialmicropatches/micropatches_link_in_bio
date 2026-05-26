@@ -289,16 +289,22 @@ if (neededBy) bodyLines.push('Needed By: ' + neededBy);
 if (shippingState) bodyLines.push('Shipping State: ' + shippingState);
 bodyLines.push('', 'PROJECT DETAILS:', details);
 
-// Submit to Formspree endpoint
+// Submit to Formspree endpoint using FormData to support file uploads
+var submitData = new FormData();
+submitData.append('name', name);
+submitData.append('email', email);
+submitData.append('_subject', 'New MicroPatches Custom Quote Request');
+submitData.append('message', bodyLines.join('\n'));
+
+// Append file if present
+var refImageFile = data.get('reference_image');
+if (refImageFile && refImageFile.size > 0) {
+submitData.append('reference_image', refImageFile);
+}
+
 fetch(formspreeEndpoint, {
 method: 'POST',
-headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-body: JSON.stringify({
-name: name,
-email: email,
-_subject: 'New MicroPatches Custom Quote Request',
-message: bodyLines.join('\n')
-})
+body: submitData
 }).then(function (response) {
 if (response.ok) {
 form.style.display = 'none';

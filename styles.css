@@ -322,22 +322,29 @@ button, input, select, textarea {
   position: relative;
 }
 
+.form-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
 .form-step {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
-  line-height: 32px;
-  text-align: center;
   border: 2px solid var(--gold-bright);
   border-radius: 50%;
   font-size: 0.75rem;
   font-weight: 900;
   color: var(--gold-bright);
-  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .form-section-title {
-  margin: 8px 0 12px 0;
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.1em;
@@ -347,13 +354,13 @@ button, input, select, textarea {
 
 label {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 label span.optional {
@@ -369,9 +376,9 @@ input, select, textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink);
-  padding: 10px 12px;
+  padding: 12px 14px;
   font-size: 0.9rem;
-  min-height: 40px;
+  min-height: 44px;
 }
 
 select {

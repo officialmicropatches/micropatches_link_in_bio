@@ -227,30 +227,29 @@
     }
   }
 
+  // Shopify Forms integration — Form ID: 992535
+  // Submissions POST to the Shopify store contact endpoint and trigger
+  // email notifications to officialmicropatches@gmail.com
   function configureForm() {
     var form = document.getElementById('quoteForm');
     if (!form || !config.quoteForm) return;
 
-    var subject = document.getElementById('formSubject');
-    var next = document.getElementById('formNext');
     var status = document.getElementById('formStatus');
-
-    var formTarget = config.quoteForm.endpointToken || encodeURIComponent(config.quoteForm.recipientEmail);
-    form.action = 'https://formsubmit.co/' + formTarget;
-    if (subject) subject.value = config.quoteForm.subject;
-    if (next) next.value = new URL(config.quoteForm.successPage || 'thankyou.html', window.location.href).href;
+    var successEl = document.getElementById('formSuccess');
+    var shopifyStore = config.quoteForm.shopifyStore || 'micropatches.myshopify.com';
 
     form.addEventListener('input', function (event) {
       event.target.classList.remove('field-error');
     });
 
     form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
       form.querySelectorAll('.field-error').forEach(function (field) {
         field.classList.remove('field-error');
       });
 
       if (!form.checkValidity()) {
-        event.preventDefault();
         var invalidFields = Array.prototype.slice.call(form.querySelectorAll(':invalid'));
         invalidFields.forEach(function (field) {
           field.classList.add('field-error');
@@ -259,7 +258,57 @@
         if (invalidFields[0]) invalidFields[0].focus();
         return;
       }
-      if (status) status.textContent = 'Submitting your quote request...';
+
+      if (status) status.textContent = 'Submitting your request…';
+
+      var data = new FormData(form);
+      var name = data.get('customer_name') || '';
+      var email = data.get('customer_email') || '';
+      var phone = data.get('phone') || '';
+      var productType = data.get('product_type') || '';
+      var quantity = data.get('quantity') || '';
+      var organization = data.get('organization') || '';
+      var details = data.get('additional_details') || '';
+      var neededBy = data.get('needed_by_date') || '';
+      var shippingState = data.get('shipping_state') || '';
+      var artworkRef = data.get('artwork_reference_type') || '';
+      var hasRefImage = data.get('has_reference_image') || '';
+      var refImageLink = data.get('reference_image_link') || '';
+
+      var bodyLines = [
+        '=== CUSTOM ORDER REQUEST ===',
+        'Product Type: ' + productType,
+        'Quantity: ' + quantity
+      ];
+      if (phone) bodyLines.push('Phone: ' + phone);
+      if (organization) bodyLines.push('Organization: ' + organization);
+      if (artworkRef) bodyLines.push('Artwork Reference: ' + artworkRef);
+      if (hasRefImage) bodyLines.push('Has Reference Image: ' + hasRefImage);
+      if (refImageLink) bodyLines.push('Reference Image Link: ' + refImageLink);
+      if (neededBy) bodyLines.push('Needed By: ' + neededBy);
+      if (shippingState) bodyLines.push('Shipping State: ' + shippingState);
+      bodyLines.push('', 'PROJECT DETAILS:', details);
+
+      var params = new URLSearchParams();
+      params.append('form_type', 'contact');
+      params.append('utf8', '✓');
+      params.append('contact[name]', name);
+      params.append('contact[email]', email);
+      params.append('contact[body]', bodyLines.join('\n'));
+
+      // Submit to Shopify contact endpoint (Shopify Forms — Form ID: 992535)
+      fetch('https://' + shopifyStore + '/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        mode: 'no-cors',
+        body: params.toString()
+      }).then(function () {
+        form.style.display = 'none';
+        if (successEl) successEl.style.display = 'block';
+        if (status) status.textContent = '';
+      }).catch(function () {
+        if (status) status.textContent = 'There was an error submitting your request. Please email officialmicropatches@gmail.com directly.';
+      });
     });
   }
 

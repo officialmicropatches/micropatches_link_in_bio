@@ -126,13 +126,7 @@
             <p class="cta-description">A quick guided intake — most projects take about a minute to submit.</p>
           </div>
 
-          <form class="quote-form" id="quoteForm" method="POST" enctype="multipart/form-data" novalidate>
-            <input type="hidden" name="_subject" id="formSubject" value="New MicroPatches Custom Quote Request">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" id="formNext" value="thankyou.html">
-            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+          <form class="quote-form" id="quoteForm" novalidate>
             <div class="form-section">
               <span class="form-step">01</span>
               <h4 class="form-section-title">CONTACT</h4>
@@ -218,6 +212,10 @@
             <button class="cta-button primary full-width" type="submit">START YOUR REQUEST →</button>
             <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           </form>
+          <div id="formSuccess" class="form-success" style="display:none;" role="status" aria-live="polite">
+            <p>Thanks for reaching out. I received your custom request and will follow up as soon as possible.</p>
+          </div>
+          <p class="form-fallback">If this form gives you any issue, email me directly at <a href="mailto:officialmicropatches@gmail.com">officialmicropatches@gmail.com</a> and I&#8217;ll personally help you.</p>
         </section>
       </main>
 

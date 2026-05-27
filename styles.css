@@ -944,6 +944,78 @@ input:focus, select:focus, textarea:focus {
   input, select, textarea {
     box-sizing: border-box !important;
   }
+
+  .quote-form {
+    gap: 12px;
+  }
+
+  .form-section-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .form-step {
+    width: 28px;
+    height: 28px;
+    font-size: 0.65rem;
+    border-width: 1.5px;
+  }
+
+  .form-section-title {
+    font-size: 0.7rem;
+  }
+
+  .cta-header {
+    margin-bottom: 16px;
+  }
+
+  .cta-label {
+    font-size: 0.65rem;
+  }
+
+  .cta-title {
+    margin: 4px 0 8px;
+    font-size: 1.4rem;
+  }
+
+  .cta-description {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+  }
+
+  label {
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: 0.7rem;
+  }
+
+  input, select, textarea {
+    padding: 10px 12px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  .consent {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .consent input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-height: auto;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .consent span {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
 }
 
 /* Tablet */

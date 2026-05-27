@@ -476,12 +476,14 @@ button, input, select, textarea {
   border-bottom: none;
 }
 
-.pricing-item:hover {
+.pricing-item:hover,
+.pricing-item:focus-visible {
   background: rgba(196, 152, 78, 0.05);
   padding-left: 8px;
   padding-right: 8px;
   margin: 0 -8px;
   border-radius: 4px;
+  outline: none;
 }
 
 .pricing-item-header {
@@ -489,6 +491,34 @@ button, input, select, textarea {
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  gap: 12px;
+}
+
+.item-name-section {
+  flex: 1;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.item-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  color: var(--gold-bright);
+  transition: transform 200ms ease;
+  flex-shrink: 0;
+}
+
+.item-chevron.is-expanded {
+  transform: rotate(90deg);
 }
 
 .pricing-item-details {

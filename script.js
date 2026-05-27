@@ -376,14 +376,17 @@ function configurePricingItems() {
 var items = document.querySelectorAll('.pricing-item[role="button"]');
 items.forEach(function (item) {
 var details = item.querySelector('.pricing-item-details');
+var chevron = item.querySelector('.item-chevron');
 if (!details) return;
 
 item.addEventListener('click', function () {
 var isHidden = details.hasAttribute('hidden');
 if (isHidden) {
 details.removeAttribute('hidden');
+if (chevron) chevron.classList.add('is-expanded');
 } else {
 details.setAttribute('hidden', '');
+if (chevron) chevron.classList.remove('is-expanded');
 }
 });
 

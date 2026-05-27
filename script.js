@@ -369,6 +369,31 @@ renderComparisonCards();
 renderPricingTabs();
 renderFormOptions();
 configureForm();
+configurePricingItems();
+}
+
+function configurePricingItems() {
+var items = document.querySelectorAll('.pricing-item[role="button"]');
+items.forEach(function (item) {
+var details = item.querySelector('.pricing-item-details');
+if (!details) return;
+
+item.addEventListener('click', function () {
+var isHidden = details.hasAttribute('hidden');
+if (isHidden) {
+details.removeAttribute('hidden');
+} else {
+details.setAttribute('hidden', '');
+}
+});
+
+item.addEventListener('keydown', function (event) {
+if (event.key === 'Enter' || event.key === ' ') {
+event.preventDefault();
+item.click();
+}
+});
+});
 }
 
 fetch('siteConfig.json', { cache: 'no-store' })

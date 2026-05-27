@@ -466,16 +466,54 @@ button, input, select, textarea {
 }
 
 .pricing-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 200ms ease;
 }
 
 .pricing-item:last-child {
   border-bottom: none;
+}
+
+.pricing-item:hover {
+  background: rgba(196, 152, 78, 0.05);
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0 -8px;
+  border-radius: 4px;
+}
+
+.pricing-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.pricing-item-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.pricing-item-details[hidden] {
+  display: none;
+}
+
+.item-description {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.item-size {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--gold-bright);
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .item-name {

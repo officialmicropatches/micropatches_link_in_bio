@@ -270,7 +270,6 @@ var quantity = data.get('quantity') || '';
 var organization = data.get('organization') || '';
 var details = data.get('additional_details') || '';
 var neededBy = data.get('needed_by_date') || '';
-var shippingState = data.get('shipping_state') || '';
 var artworkRef = data.get('artwork_reference_type') || '';
 var hasRefImage = data.get('has_reference_image') || '';
 var refImageLink = data.get('reference_image_link') || '';
@@ -286,7 +285,6 @@ if (artworkRef) bodyLines.push('Artwork Reference: ' + artworkRef);
 if (hasRefImage) bodyLines.push('Has Reference Image: ' + hasRefImage);
 if (refImageLink) bodyLines.push('Reference Image Link: ' + refImageLink);
 if (neededBy) bodyLines.push('Needed By: ' + neededBy);
-if (shippingState) bodyLines.push('Shipping State: ' + shippingState);
 bodyLines.push('', 'PROJECT DETAILS:', details);
 
 // Submit to Formspree endpoint using FormData to support file uploads

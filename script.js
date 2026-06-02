@@ -235,7 +235,12 @@
     var successEl = document.getElementById('formSuccess');
 
     form.method = 'POST';
+    // PRIMARY: Formspree (reliable, free, auto email to officialmicropatches@gmail.com)
     form.action = 'https://formspree.io/f/mpwwabdd';
+    // BACKUP 1: Basin (basin.io) - setup form, use: https://basin.io/form/{form_id}
+    // BACKUP 2: Getform (getform.io) - setup form, use: https://getform.io/f/{form_id}
+    // BACKUP 3: EmailJS (emailjs.com) - requires library, replace entire function
+    // See FORM_BACKUP.md for full recovery instructions
 
     form.addEventListener('input', function (event) {
       event.target.classList.remove('field-error');
@@ -259,7 +264,26 @@
 
       if (status) status.textContent = 'Submitting your request…';
 
+      // Fallback: If form submission fails after 5 seconds, open mailto
+      var fallbackTimer = setTimeout(function() {
+        var data = new FormData(form);
+        var name = data.get('customer_name') || 'Customer';
+        var email = data.get('customer_email') || '';
+        var mailtoLink = 'mailto:officialmicropatches@gmail.com?subject=' +
+          encodeURIComponent('MicroPatches Quote Request from ' + name) +
+          '&body=' + encodeURIComponent('If you received this email, the form service was temporarily down.\n\n' +
+          'Name: ' + name + '\nEmail: ' + email);
+
+        setTimeout(function() {
+          if (status && status.textContent === 'Submitting your request…') {
+            if (status) status.textContent = 'Form service unavailable. Opening email…';
+            window.location.href = mailtoLink;
+          }
+        }, 5000);
+      }, 0);
+
       setTimeout(function() {
+        clearTimeout(fallbackTimer);
         form.style.display = 'none';
         if (successEl) successEl.style.display = 'block';
         if (status) status.textContent = '';

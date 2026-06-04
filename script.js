@@ -351,7 +351,7 @@ item.click();
 });
 }
 
-fetch('siteConfig.json', { cache: 'no-store' })
+fetch('siteConfig.json?v=20260604-001', { cache: 'no-store' })
 .then(function (response) { return response.json(); })
 .then(function (loadedConfig) {
 config = loadedConfig;

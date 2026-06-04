@@ -182,7 +182,7 @@
 },
 "pricing": {
 "globalNote": "Pricing is estimate based and subject to final artwork review. Custom requests may vary by size, detail, quantity, and production requirements.",
-"designFeeNote": "The $25 design work-up fee is flat per custom design, not per item. It may be waived for qualifying larger orders. Do not submit payment information through the quote form.",
+"designFeeNote": "The $25 design work-up fee is flat per custom design, not per item. This covers reviewing the artwork, creating the custom coin layout, digital design work, preparing the files for production, making revisions as needed, and quality checking the final design before production begins. It may be waived for qualifying larger orders. Do not submit payment information through the quote form.",
 "groups": [
 {
 "name": "MicroKeychains",
@@ -358,18 +358,18 @@
 },
 {
 "name": "Flexible Patch",
-"startingPrice": "From $14.99",
+"startingPrice": "From $12.99",
 "thickness": "Usually around 2 mm to 3 mm",
 "description": "Custom flexible, durable, raised texture patch style products. These are not PVC patches and are not embroidered patches.",
 "pricing": [
 {
 "quantity": "Small 1",
-"price": "$15 each",
+"price": "$12.99 each",
 "fee": "$25 design fee"
 },
 {
 "quantity": "Small 2-10",
-"price": "$13.50 each",
+"price": "$11.99 each",
 "fee": "$25 design fee"
 },
 {
@@ -379,12 +379,12 @@
 },
 {
 "quantity": "Medium 1",
-"price": "$20 each",
+"price": "$14.99 each",
 "fee": "$25 design fee"
 },
 {
 "quantity": "Medium 2-10",
-"price": "$18.50 each",
+"price": "$13.99 each",
 "fee": "$25 design fee"
 },
 {
@@ -393,17 +393,17 @@
 "fee": "Design fee waived"
 },
 {
-"quantity": "Full Size 1",
-"price": "$25 each",
+"quantity": "Large/Replica Patch 1",
+"price": "$19.99 each",
 "fee": "$25 design fee"
 },
 {
-"quantity": "Full Size 2-10",
-"price": "$23.50 each",
+"quantity": "Large/Replica Patch 2-10",
+"price": "$18.99 each",
 "fee": "$25 design fee"
 },
 {
-"quantity": "Full Size 50+",
+"quantity": "Large/Replica Patch 50+",
 "price": "$18.50 each",
 "fee": "Design fee waived"
 },
@@ -413,12 +413,12 @@
 "fee": "Quoted by size, detail, backing, and quantity"
 }
 ],
-"note": "Small: 2 x 2 in to 3 x 2 in. Medium: ~2.5\"/65mm. Full Size: made 1 to 1 with the original patch being modeled. Oversized Flexible Patch style products require a custom quote."
+"note": "Small: 55mm. Medium: 65mm. Large/Replica Patch: Size depends on original patch being modeled. Oversized Flexible Patch style products require a custom quote."
 },
 {
 "name": "Challenge Coins",
 "startingPrice": "From $19.99",
-"size": "1.75 in to 2.5 in",
+"size": "45 mm diameter (1.77 in)",
 "description": "Custom raised texture challenge coin style products for agencies, units, teams, events, supporters, and collectors.",
 "pricing": [
 {
@@ -457,7 +457,7 @@
 "fee": "Design fee waived"
 }
 ],
-"note": "Challenge Coin style products are custom raised texture products. They are not described as metal coins unless approved later."
+"note": "Challenge Coin style products are custom raised texture products with a 45 mm diameter. They are not described as metal coins unless approved later."
 }
 ]
 },

@@ -196,25 +196,35 @@ return '<option>' + escapeHtml(option) + '</option>';
 }
 }
 
-// Formspree integration — Form: MicroPatches (mqednono)
-// Submissions POST to https://formspree.io/f/mqednono and trigger
-// email notifications to officialmicropatches@gmail.com
+// Web3Forms integration — submissions (including the optional reference
+// image) POST to api.web3forms.com and arrive as an email, with the photo
+// attached, at officialmicropatches@gmail.com. Everything happens in a single
+// submit so the customer never has to send a separate email.
+var MAX_ATTACHMENT_BYTES = 9 * 1024 * 1024; // Web3Forms attachment ceiling (~10MB); stay safely under
+
 function configureForm() {
 var form = document.getElementById('quoteForm');
 if (!form || !config.quoteForm) return;
 
 var status = document.getElementById('formStatus');
 var successEl = document.getElementById('formSuccess');
-var formspreeEndpoint = config.quoteForm.formspreeEndpoint || 'https://formspree.io/f/mqednono';
+var endpoint = config.quoteForm.formEndpoint || 'https://api.web3forms.com/submit';
+var accessKey = config.quoteForm.web3formsAccessKey || '';
+
+// Inject the Web3Forms access key from config so it lives in one place.
+var accessKeyInput = document.getElementById('web3formsAccessKey');
+if (accessKeyInput) accessKeyInput.value = accessKey;
 
 form.addEventListener('input', function (event) {
 event.target.classList.remove('field-error');
 });
 
 form.method = 'POST';
-form.action = formspreeEndpoint;
+form.action = endpoint;
+form.enctype = 'multipart/form-data';
 
 var submitButton = form.querySelector('button[type="submit"]');
+var fileInput = form.querySelector('input[type="file"]');
 
 function showError(message) {
 if (status) status.textContent = message || 'Something went wrong. Please email officialmicropatches@gmail.com and I’ll help you directly.';
@@ -228,6 +238,11 @@ form.querySelectorAll('.field-error').forEach(function (field) {
 field.classList.remove('field-error');
 });
 
+if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+showError('This form isn’t fully set up yet. Please email officialmicropatches@gmail.com and I’ll help you directly.');
+return;
+}
+
 if (!form.checkValidity()) {
 var invalidFields = Array.prototype.slice.call(form.querySelectorAll(':invalid'));
 invalidFields.forEach(function (field) {
@@ -238,29 +253,34 @@ if (invalidFields[0]) invalidFields[0].focus();
 return;
 }
 
+// Guard against attachments too large for the email delivery.
+if (fileInput && fileInput.files && fileInput.files[0] && fileInput.files[0].size > MAX_ATTACHMENT_BYTES) {
+fileInput.classList.add('field-error');
+if (status) status.textContent = 'That image is a bit large. Please use a photo under 9 MB, or leave it off and we’ll request it later.';
+fileInput.focus();
+return;
+}
+
 if (status) status.textContent = 'Submitting your request…';
 if (submitButton) submitButton.disabled = true;
 
-// AJAX submit (text fields only) so the page never redirects to Formspree
-// and the in-page success message is shown. Formspree free tier does not
-// accept file uploads, so reference photos are collected over email/DM.
-fetch(formspreeEndpoint, {
+// AJAX multipart submit so the page never redirects and the optional photo
+// is delivered as an attachment in the same request. Do NOT set
+// Content-Type manually — the browser adds the multipart boundary.
+fetch(endpoint, {
 method: 'POST',
 body: new FormData(form),
 headers: { Accept: 'application/json' }
 })
 .then(function (response) {
-if (response.ok) {
+return response.json().then(function (data) {
+if (response.ok && data && data.success) {
 form.style.display = 'none';
 if (successEl) successEl.style.display = 'block';
 if (status) status.textContent = '';
 return;
 }
-return response.json().then(function (data) {
-var message = data && data.errors && data.errors.length
-? data.errors.map(function (error) { return error.message; }).join(', ')
-: '';
-showError(message);
+showError(data && data.message ? data.message : '');
 }).catch(function () { showError(); });
 })
 .catch(function () { showError(); });

@@ -86,6 +86,12 @@
       </div>
 
       <form class="quote-form" id="quoteForm" novalidate>
+        <!-- Web3Forms hidden fields (access_key is set from siteConfig at runtime) -->
+        <input type="hidden" name="access_key" id="web3formsAccessKey">
+        <input type="hidden" name="subject" value="New MicroPatches Custom Quote Request">
+        <input type="hidden" name="from_name" value="MicroPatches Quote Form">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
         <label class="field">
           <span class="field-label">Full name</span>
           <input name="customer_name" type="text" autocomplete="name" required>
@@ -117,7 +123,11 @@
           <textarea name="additional_details" rows="3" placeholder="Tell us about the patch, badge, logo, or idea you want made." required></textarea>
         </label>
 
-        <p class="field-note" data-config-text="quoteForm.imageNote">Have a reference photo? Email or DM it to us after you submit and we'll match it to your request.</p>
+        <label class="field">
+          <span class="field-label">Reference image <span class="optional">optional</span></span>
+          <input name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,application/pdf">
+          <span class="field-note" data-config-text="quoteForm.imageNote">Add a reference photo (optional) — your patch, logo, or sketch helps us quote faster.</span>
+        </label>
 
         <label class="consent">
           <input name="quote_request_consent" type="checkbox" required>

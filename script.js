@@ -196,11 +196,13 @@ return '<option>' + escapeHtml(option) + '</option>';
 }
 }
 
-// Web3Forms integration — submissions (including the optional reference
-// image) POST to api.web3forms.com and arrive as an email, with the photo
-// attached, at officialmicropatches@gmail.com. Everything happens in a single
-// submit so the customer never has to send a separate email.
-var MAX_ATTACHMENT_BYTES = 9 * 1024 * 1024; // Web3Forms attachment ceiling (~10MB); stay safely under
+// Quote form: two free services working together.
+//   1. Cloudinary hosts the optional reference photo (Web3Forms' free tier
+//      can't accept files, so the photo uploads here and returns a link).
+//   2. Web3Forms emails the request — all text fields PLUS the photo link —
+//      to officialmicropatches@gmail.com.
+// The customer still does one thing: fill out the form and hit submit.
+var MAX_IMAGE_BYTES = 10 * 1024 * 1024; // Cloudinary free-plan per-image ceiling
 
 function configureForm() {
 var form = document.getElementById('quoteForm');
@@ -210,6 +212,8 @@ var status = document.getElementById('formStatus');
 var successEl = document.getElementById('formSuccess');
 var endpoint = config.quoteForm.formEndpoint || 'https://api.web3forms.com/submit';
 var accessKey = config.quoteForm.web3formsAccessKey || '';
+var cloudName = config.quoteForm.cloudinaryCloudName || '';
+var uploadPreset = config.quoteForm.cloudinaryUploadPreset || '';
 
 // Inject the Web3Forms access key from config so it lives in one place.
 var accessKeyInput = document.getElementById('web3formsAccessKey');
@@ -221,14 +225,105 @@ event.target.classList.remove('field-error');
 
 form.method = 'POST';
 form.action = endpoint;
-form.enctype = 'multipart/form-data';
 
 var submitButton = form.querySelector('button[type="submit"]');
-var fileInput = form.querySelector('input[type="file"]');
+var fileInput = document.getElementById('referenceImage');
+var photoUrlInput = document.getElementById('referenceImageUrl');
+var uploadStatus = document.getElementById('uploadStatus');
+
+// Tracks the in-progress Cloudinary upload (a Promise) so submit can wait
+// for it rather than firing without the photo link.
+var uploadInFlight = null;
+
+function setUploadStatus(message, state) {
+if (!uploadStatus) return;
+uploadStatus.textContent = message || '';
+uploadStatus.className = 'upload-status' + (state ? ' is-' + state : '');
+}
 
 function showError(message) {
 if (status) status.textContent = message || 'Something went wrong. Please email officialmicropatches@gmail.com and I’ll help you directly.';
 if (submitButton) submitButton.disabled = false;
+}
+
+var cloudinaryReady = cloudName && uploadPreset &&
+cloudName !== 'YOUR_CLOUDINARY_CLOUD_NAME' && uploadPreset !== 'YOUR_CLOUDINARY_UPLOAD_PRESET';
+
+// Upload the chosen photo to Cloudinary as soon as it's picked. On success
+// the returned secure_url is stashed in the hidden field that Web3Forms emails.
+function uploadToCloudinary(file) {
+var data = new FormData();
+data.append('file', file);
+data.append('upload_preset', uploadPreset);
+return fetch('https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload', {
+method: 'POST',
+body: data
+}).then(function (response) {
+return response.json();
+}).then(function (result) {
+if (result && result.secure_url) {
+if (photoUrlInput) photoUrlInput.value = result.secure_url;
+setUploadStatus('Photo attached ✓', 'ok');
+return true;
+}
+throw new Error(result && result.error && result.error.message ? result.error.message : 'upload failed');
+});
+}
+
+if (fileInput) {
+fileInput.addEventListener('change', function () {
+if (photoUrlInput) photoUrlInput.value = '';
+uploadInFlight = null;
+fileInput.classList.remove('field-error');
+
+var file = fileInput.files && fileInput.files[0];
+if (!file) { setUploadStatus('', null); return; }
+
+if (file.size > MAX_IMAGE_BYTES) {
+fileInput.classList.add('field-error');
+setUploadStatus('That image is over 10 MB — please choose a smaller one.', 'error');
+fileInput.value = '';
+return;
+}
+
+if (!cloudinaryReady) {
+// Photo hosting not configured yet — let them continue without it.
+setUploadStatus('', null);
+return;
+}
+
+setUploadStatus('Uploading photo…', 'busy');
+uploadInFlight = uploadToCloudinary(file).catch(function () {
+setUploadStatus('Couldn’t upload that photo — you can still submit and we’ll request it by email.', 'error');
+if (photoUrlInput) photoUrlInput.value = '';
+uploadInFlight = null; // don't block submit on a failed optional upload
+});
+});
+}
+
+function submitForm() {
+if (status) status.textContent = 'Submitting your request…';
+if (submitButton) submitButton.disabled = true;
+
+// AJAX submit so the page never redirects and we show the in-page success
+// message. FormData carries the text fields plus the hidden photo link.
+fetch(endpoint, {
+method: 'POST',
+body: new FormData(form),
+headers: { Accept: 'application/json' }
+})
+.then(function (response) {
+return response.json().then(function (data) {
+if (response.ok && data && data.success) {
+form.style.display = 'none';
+if (successEl) successEl.style.display = 'block';
+if (status) status.textContent = '';
+return;
+}
+showError(data && data.message ? data.message : '');
+}).catch(function () { showError(); });
+})
+.catch(function () { showError(); });
 }
 
 form.addEventListener('submit', function (event) {
@@ -253,37 +348,16 @@ if (invalidFields[0]) invalidFields[0].focus();
 return;
 }
 
-// Guard against attachments too large for the email delivery.
-if (fileInput && fileInput.files && fileInput.files[0] && fileInput.files[0].size > MAX_ATTACHMENT_BYTES) {
-fileInput.classList.add('field-error');
-if (status) status.textContent = 'That image is a bit large. Please use a photo under 9 MB, or leave it off and we’ll request it later.';
-fileInput.focus();
-return;
-}
-
-if (status) status.textContent = 'Submitting your request…';
+// If a photo is still uploading, wait for it to finish before sending so the
+// link is included; otherwise submit right away.
+if (uploadInFlight) {
+if (status) status.textContent = 'Finishing photo upload…';
 if (submitButton) submitButton.disabled = true;
-
-// AJAX multipart submit so the page never redirects and the optional photo
-// is delivered as an attachment in the same request. Do NOT set
-// Content-Type manually — the browser adds the multipart boundary.
-fetch(endpoint, {
-method: 'POST',
-body: new FormData(form),
-headers: { Accept: 'application/json' }
-})
-.then(function (response) {
-return response.json().then(function (data) {
-if (response.ok && data && data.success) {
-form.style.display = 'none';
-if (successEl) successEl.style.display = 'block';
-if (status) status.textContent = '';
+uploadInFlight.then(function () { submitForm(); });
 return;
 }
-showError(data && data.message ? data.message : '');
-}).catch(function () { showError(); });
-})
-.catch(function () { showError(); });
+
+submitForm();
 });
 }
 

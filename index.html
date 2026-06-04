@@ -125,8 +125,12 @@
 
         <label class="field">
           <span class="field-label">Reference image <span class="optional">optional</span></span>
-          <input name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,application/pdf">
+          <!-- No name attr: the raw file is NOT sent to Web3Forms (its free tier rejects files).
+               Instead it uploads to Cloudinary and the resulting link rides along in the hidden field below. -->
+          <input id="referenceImage" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif">
           <span class="field-note" data-config-text="quoteForm.imageNote">Add a reference photo (optional) — your patch, logo, or sketch helps us quote faster.</span>
+          <span class="upload-status" id="uploadStatus" role="status" aria-live="polite"></span>
+          <input type="hidden" name="Reference Photo" id="referenceImageUrl">
         </label>
 
         <label class="consent">

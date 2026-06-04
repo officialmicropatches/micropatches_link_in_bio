@@ -447,6 +447,17 @@ input:focus, select:focus, textarea:focus {
   line-height: 1.4;
 }
 
+.upload-status {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  min-height: 1em;
+}
+.upload-status.is-busy { color: var(--muted); }
+.upload-status.is-ok { color: #2e8b57; }
+.upload-status.is-error { color: #c0392b; }
+
 .consent {
   display: grid;
   grid-template-columns: 22px 1fr;

@@ -542,7 +542,9 @@
 ],
 "consentText": "I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production.",
 "formEndpoint": "https://api.web3forms.com/submit",
-"web3formsAccessKey": "YOUR_WEB3FORMS_ACCESS_KEY"
+"web3formsAccessKey": "YOUR_WEB3FORMS_ACCESS_KEY",
+"cloudinaryCloudName": "YOUR_CLOUDINARY_CLOUD_NAME",
+"cloudinaryUploadPreset": "YOUR_CLOUDINARY_UPLOAD_PRESET"
 },
 "footer": {
 "privacyNote": "Information submitted through the quote request form is used only to review and respond to custom order requests. Do not submit payment information through this form."

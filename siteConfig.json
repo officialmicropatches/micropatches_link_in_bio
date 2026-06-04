@@ -542,7 +542,7 @@
 ],
 "consentText": "I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production.",
 "formEndpoint": "https://api.web3forms.com/submit",
-"web3formsAccessKey": "YOUR_WEB3FORMS_ACCESS_KEY",
+"web3formsAccessKey": "9ac9af5f-c015-4eb0-a4e5-62fa3c855b44",
 "cloudinaryCloudName": "YOUR_CLOUDINARY_CLOUD_NAME",
 "cloudinaryUploadPreset": "YOUR_CLOUDINARY_UPLOAD_PRESET"
 },

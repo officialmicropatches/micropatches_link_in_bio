@@ -213,15 +213,22 @@ event.target.classList.remove('field-error');
 
 form.method = 'POST';
 form.action = formspreeEndpoint;
-form.enctype = 'multipart/form-data';
+
+var submitButton = form.querySelector('button[type="submit"]');
+
+function showError(message) {
+if (status) status.textContent = message || 'Something went wrong. Please email officialmicropatches@gmail.com and I’ll help you directly.';
+if (submitButton) submitButton.disabled = false;
+}
 
 form.addEventListener('submit', function (event) {
+event.preventDefault();
+
 form.querySelectorAll('.field-error').forEach(function (field) {
 field.classList.remove('field-error');
 });
 
 if (!form.checkValidity()) {
-event.preventDefault();
 var invalidFields = Array.prototype.slice.call(form.querySelectorAll(':invalid'));
 invalidFields.forEach(function (field) {
 field.classList.add('field-error');
@@ -232,12 +239,31 @@ return;
 }
 
 if (status) status.textContent = 'Submitting your request…';
+if (submitButton) submitButton.disabled = true;
 
-setTimeout(function () {
+// AJAX submit (text fields only) so the page never redirects to Formspree
+// and the in-page success message is shown. Formspree free tier does not
+// accept file uploads, so reference photos are collected over email/DM.
+fetch(formspreeEndpoint, {
+method: 'POST',
+body: new FormData(form),
+headers: { Accept: 'application/json' }
+})
+.then(function (response) {
+if (response.ok) {
 form.style.display = 'none';
 if (successEl) successEl.style.display = 'block';
 if (status) status.textContent = '';
-}, 800);
+return;
+}
+return response.json().then(function (data) {
+var message = data && data.errors && data.errors.length
+? data.errors.map(function (error) { return error.message; }).join(', ')
+: '';
+showError(message);
+}).catch(function () { showError(); });
+})
+.catch(function () { showError(); });
 });
 }
 
@@ -282,6 +308,7 @@ if (favicon && config.seo.favicon) favicon.href = config.seo.favicon;
 'trustBadges.heading',
 'quoteForm.warning',
 'quoteForm.consentText',
+'quoteForm.imageNote',
 'footer.privacyNote'
 ].forEach(setText);
 

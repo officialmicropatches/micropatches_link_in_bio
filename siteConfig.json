@@ -530,6 +530,7 @@
 "successPage": "thankyou.html",
 "intro": "This is a quote request, not an automatic order. MicroPatches will review your request and follow up by email.",
 "warning": "Do not submit payment information through this form.",
+"imageNote": "Have a reference photo? Email or DM it to us after you submit and we'll match it to your request.",
 "productTypes": [
 "MicroKeychains",
 "MicroMagnets",

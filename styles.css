@@ -192,7 +192,10 @@ button, input, select, textarea { font: inherit; }
 }
 
 /* ---------- Horizontal swipe rails ---------- */
+.rail-wrap { position: relative; }
+
 .swipe-rail {
+  position: relative;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 46%;
@@ -205,8 +208,44 @@ button, input, select, textarea { font: inherit; }
   margin: 0 -16px;
   padding-left: 16px;
   padding-right: 16px;
+  user-select: none;
 }
 .swipe-rail::-webkit-scrollbar { display: none; }
+.swipe-rail.is-dragging { scroll-snap-type: none; }
+
+/* Prev/next arrows — surfaced on devices that have a real pointer (desktop). */
+.rail-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: rgba(11, 11, 9, 0.78);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: opacity 160ms ease, background 160ms ease, color 160ms ease;
+}
+.rail-arrow-prev { left: 2px; }
+.rail-arrow-next { right: 2px; }
+.rail-arrow:hover { background: var(--accent); color: var(--bg); }
+.rail-arrow:disabled { opacity: 0; pointer-events: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  .rail-arrow { display: flex; }
+  .swipe-rail { cursor: grab; }
+  .swipe-rail.is-dragging { cursor: grabbing; }
+  .swipe-hint { display: none; }
+}
 
 .swipe-card {
   scroll-snap-align: start;
@@ -282,15 +321,20 @@ button, input, select, textarea { font: inherit; }
   margin-top: 10px;
 }
 
-.swipe-dots span {
+.swipe-dots button {
+  -webkit-appearance: none;
+  appearance: none;
   width: 6px;
   height: 6px;
+  padding: 0;
+  border: none;
   border-radius: 50%;
   background: var(--line-strong);
+  cursor: pointer;
   transition: background 160ms ease, width 160ms ease;
 }
 
-.swipe-dots span.is-active {
+.swipe-dots button.is-active {
   background: var(--accent);
   width: 16px;
   border-radius: 999px;

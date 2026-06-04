@@ -102,7 +102,7 @@ return '<article class="swipe-card">' +
 '</div></article>';
 }).join('');
 bindImageFallbacks(container);
-setupDots('productShowcase', container);
+setupRail('productShowcase', container);
 }
 
 function renderDesignFee() {
@@ -141,7 +141,7 @@ return '<article class="project-card">' +
 '</article>';
 }).join('');
 bindImageFallbacks(container);
-setupDots('recentProjects', container);
+setupRail('recentProjects', container);
 }
 
 function renderTrustBadges() {
@@ -153,17 +153,69 @@ return '<li>' + escapeHtml(item) + '</li>';
 }).join('');
 }
 
-// Swipe indicator dots for a horizontal rail
-function setupDots(key, rail) {
+// Horizontal rail navigation. The rail scrolls natively via touch swipe, but
+// desktop/mouse users had no way to move it — so this also adds clickable
+// indicator dots, prev/next arrows, and click-and-drag scrolling.
+function setupRail(key, rail) {
 var dotsEl = document.querySelector('[data-dots-for="' + key + '"]');
-if (!dotsEl) return;
 var cards = Array.prototype.slice.call(rail.children);
-if (cards.length < 2) { dotsEl.innerHTML = ''; return; }
+var multiple = cards.length >= 2;
 
+// Make the rail its own positioning context so card.offsetLeft lines up with
+// rail.scrollLeft, and wrap it once so arrows can sit over it.
+var wrap = rail.parentNode;
+if (!wrap || !wrap.classList.contains('rail-wrap')) {
+wrap = document.createElement('div');
+wrap.className = 'rail-wrap';
+rail.parentNode.insertBefore(wrap, rail);
+wrap.appendChild(rail);
+}
+
+function step(direction) {
+rail.scrollBy({ left: direction * rail.clientWidth * 0.85, behavior: 'smooth' });
+}
+function scrollToCard(index) {
+if (cards[index]) {
+rail.scrollTo({ left: cards[index].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+}
+}
+
+// Prev/next arrows (shown on desktop via CSS).
+var prev = null, next = null;
+if (multiple) {
+prev = document.createElement('button');
+prev.type = 'button';
+prev.className = 'rail-arrow rail-arrow-prev';
+prev.setAttribute('aria-label', 'Previous');
+prev.innerHTML = '‹';
+next = document.createElement('button');
+next.type = 'button';
+next.className = 'rail-arrow rail-arrow-next';
+next.setAttribute('aria-label', 'Next');
+next.innerHTML = '›';
+prev.addEventListener('click', function () { step(-1); });
+next.addEventListener('click', function () { step(1); });
+wrap.appendChild(prev);
+wrap.appendChild(next);
+}
+
+// Clickable indicator dots.
+var dots = [];
+if (dotsEl) {
+if (!multiple) {
+dotsEl.innerHTML = '';
+} else {
+dotsEl.removeAttribute('aria-hidden');
 dotsEl.innerHTML = cards.map(function (_, index) {
-return '<span' + (index === 0 ? ' class="is-active"' : '') + '></span>';
+return '<button type="button"' + (index === 0 ? ' class="is-active"' : '') +
+' aria-label="Go to item ' + (index + 1) + '"></button>';
 }).join('');
-var dots = Array.prototype.slice.call(dotsEl.children);
+dots = Array.prototype.slice.call(dotsEl.children);
+dots.forEach(function (dot, index) {
+dot.addEventListener('click', function () { scrollToCard(index); });
+});
+}
+}
 
 function updateActive() {
 var center = rail.scrollLeft + rail.clientWidth / 2;
@@ -177,6 +229,8 @@ if (distance < closest) { closest = distance; activeIndex = index; }
 dots.forEach(function (dot, index) {
 dot.classList.toggle('is-active', index === activeIndex);
 });
+if (prev) prev.disabled = rail.scrollLeft <= 2;
+if (next) next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
 }
 
 var ticking = false;
@@ -185,6 +239,27 @@ if (ticking) return;
 ticking = true;
 window.requestAnimationFrame(function () { updateActive(); ticking = false; });
 });
+
+// Click-and-drag scrolling for mouse/pen (touch keeps native swipe).
+var dragging = false, startX = 0, startScroll = 0;
+rail.addEventListener('pointerdown', function (event) {
+if (event.pointerType === 'touch') return;
+dragging = true;
+startX = event.clientX;
+startScroll = rail.scrollLeft;
+rail.classList.add('is-dragging');
+rail.setPointerCapture(event.pointerId);
+});
+rail.addEventListener('pointermove', function (event) {
+if (!dragging) return;
+rail.scrollLeft = startScroll - (event.clientX - startX);
+});
+function endDrag() { dragging = false; rail.classList.remove('is-dragging'); }
+rail.addEventListener('pointerup', endDrag);
+rail.addEventListener('pointercancel', endDrag);
+rail.addEventListener('dragstart', function (event) { event.preventDefault(); });
+
+updateActive();
 }
 
 function renderFormOptions() {

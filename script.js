@@ -31,9 +31,13 @@ return {
 });
 }
 
+function fallbackImage() {
+return getValue('assets.imageFallback') || 'assets/products/product_photo_placeholder.svg';
+}
+
 function safeImage(img, src, alt) {
 if (!img) return;
-var fallback = getValue('assets.imageFallback') || 'assets/products/product_photo_placeholder.svg';
+var fallback = fallbackImage();
 img.src = src || fallback;
 if (alt) img.alt = alt;
 img.onerror = function () {
@@ -43,185 +47,150 @@ img.alt = 'MicroPatches product photo';
 };
 }
 
+function bindImageFallbacks(container) {
+container.querySelectorAll('img').forEach(function (img) {
+safeImage(img, img.getAttribute('src'), img.getAttribute('alt'));
+});
+}
+
 function renderButtons() {
 var container = document.querySelector('[data-config="mainButtons"]');
 if (!container) return;
 
 var links = config.links || {};
 var labels = config.buttons || {};
-var buttons = [
-{ label: labels.customQuote || 'Request a Custom Quote', href: '#quote', className: 'primary-button' },
-{ label: labels.etsy || 'Shop Etsy', href: links.etsy, className: 'secondary-button' },
-{ label: labels.instagram || 'Instagram', href: links.instagram, className: 'link-button' },
-{ label: labels.tiktok || 'TikTok', href: links.tiktok, className: 'link-button' },
-{ label: labels.facebook || 'Facebook', href: links.facebook, className: 'link-button' },
-{ label: labels.email || 'Email', href: links.email, className: 'link-button' }
-];
 
-if (links.futureShopifyEnabled && links.futureShopify) {
-buttons.push({ label: labels.futureShopify || 'Shop MicroPatches', href: links.futureShopify, className: 'link-button' });
-}
-if (links.futureWebsiteEnabled && links.futureWebsite) {
-buttons.push({ label: labels.futureWebsite || 'Visit Website', href: links.futureWebsite, className: 'link-button' });
+function anchor(label, href, className) {
+if (!href) return '';
+var target = href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
+return '<a class="' + className + '" href="' + escapeHtml(href) + '"' + target + '>' + escapeHtml(label) + '</a>';
 }
 
-container.innerHTML = buttons
-.filter(function (button) { return button.href; })
-.map(function (button) {
-var target = button.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
-return '<a class="' + button.className + '" href="' + escapeHtml(button.href) + '"' + target + '>' + escapeHtml(button.label) + '</a>';
-})
-.join('');
+var html = '';
+html += anchor(labels.customQuote || 'Request Quote', '#quote', 'btn btn-primary');
+html += anchor(labels.etsy || 'Shop Etsy', links.etsy, 'btn btn-secondary');
+
+var social = '';
+social += anchor(labels.instagram || 'Instagram', links.instagram, 'btn btn-ghost');
+social += anchor(labels.tiktok || 'TikTok', links.tiktok, 'btn btn-ghost');
+social += anchor(labels.facebook || 'Facebook', links.facebook, 'btn btn-ghost');
+social += anchor(labels.email || 'Email', links.email, 'btn btn-ghost');
+if (social) html += '<div class="social-grid">' + social + '</div>';
+
+container.innerHTML = html;
 }
 
-function renderComparisonCards() {
-var container = document.querySelector('[data-config="comparisonCards"]');
+function renderTrustRow() {
+var container = document.querySelector('[data-config="trustRow"]');
 if (!container) return;
-
-container.innerHTML = (config.pricingTransparency.comparisonCards || []).map(function (card) {
-return '<article class="comparison-card ' + escapeHtml(card.type || '') + '"><h3>' + escapeHtml(card.title) + '</h3><ul>' +
-card.bullets.map(function (item) {
-var text = typeof item === 'string' ? item : item.text;
-return '<li>' + escapeHtml(text) + '</li>';
-}).join('') +
-'</ul></article>';
+var items = getValue('hero.trustRow') || [];
+container.innerHTML = items.map(function (item) {
+return '<li>' + escapeHtml(item) + '</li>';
 }).join('');
 }
 
-function renderPricingTabs() {
-var container = document.querySelector('[data-config="pricingTabs"]');
+function renderShowcase() {
+var container = document.querySelector('[data-config="productShowcase"]');
 if (!container) return;
-
-var groups = config.pricing.groups || [];
-if (!groups.length) {
-container.innerHTML = '';
-return;
+var items = getValue('productShowcase.items') || [];
+container.innerHTML = items.map(function (item) {
+return '<article class="swipe-card">' +
+'<img class="card-img" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.alt || item.name) + '" loading="lazy">' +
+'<div class="card-body">' +
+'<span class="card-name">' + escapeHtml(item.name) + '</span>' +
+'<span class="card-price">' + escapeHtml(item.price) + '</span>' +
+'</div></article>';
+}).join('');
+bindImageFallbacks(container);
+setupDots('productShowcase', container);
 }
 
-container.innerHTML =
-'<div class="tab-list" role="tablist" aria-label="Product pricing">' +
-groups.map(function (group, index) {
-var price = group.startingPrice ? '<span>' + escapeHtml(group.startingPrice) + '</span>' : '';
-return '<button class="tab-button' + (index === 0 ? ' is-active' : '') + '" type="button" role="tab" aria-selected="' +
-(index === 0 ? 'true' : 'false') + '" aria-controls="pricing-panel-' + index + '" id="pricing-tab-' + index +
-'" data-pricing-tab="' + index + '"><strong>' + escapeHtml(group.name) + '</strong>' + price + '</button>';
-}).join('') +
-'</div>' +
-groups.map(function (group, index) {
-var meta = [group.size, group.thickness].filter(Boolean).map(function (item) {
-return '<span>' + escapeHtml(item) + '</span>';
-}).join('');
-var rows = (group.pricing || []).map(function (row) {
-return '<div class="pricing-row"><strong>' + escapeHtml(row.quantity) + '</strong><span>' +
-escapeHtml(row.price) + '</span><span>' + escapeHtml(row.fee) + '</span></div>';
-}).join('');
-var table = rows ? '<div class="pricing-table">' + rows + '</div>' : '';
-var note = group.note ? '<p class="pricing-note">' + escapeHtml(group.note) + '</p>' : '';
-
-var headingPrice = group.startingPrice ? '<span class="panel-price">' + escapeHtml(group.startingPrice) + '</span>' : '';
-return '<article class="pricing-panel' + (index === 0 ? ' is-active' : '') + '" role="tabpanel" id="pricing-panel-' +
-index + '" aria-labelledby="pricing-tab-' + index + '">' +
-'<div class="pricing-panel-head"><h3>' + escapeHtml(group.name) + headingPrice + '</h3><div class="pricing-meta">' + meta +
-'</div><p>' + escapeHtml(group.description || '') + '</p></div>' + table + note + '</article>';
-}).join('');
-
-var tabs = Array.prototype.slice.call(container.querySelectorAll('[data-pricing-tab]'));
-var panels = Array.prototype.slice.call(container.querySelectorAll('.pricing-panel'));
-
-function showTab(index) {
-tabs.forEach(function (tab, tabIndex) {
-var isActive = tabIndex === index;
-tab.classList.toggle('is-active', isActive);
-tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-});
-panels.forEach(function (panel, panelIndex) {
-panel.classList.toggle('is-active', panelIndex === index);
-});
-}
-
-tabs.forEach(function (tab) {
-tab.addEventListener('click', function () {
-showTab(Number(tab.getAttribute('data-pricing-tab')));
-});
-});
-}
-
-function renderGallery() {
-var container = document.querySelector('[data-config="gallery"]');
+function renderDesignFee() {
+var container = document.querySelector('[data-config="designFee"]');
 if (!container) return;
-var images = config.gallery.images || [];
-
-if (!images.length) {
-container.innerHTML = '';
-return;
+var fee = getValue('pricingCards.designFee');
+if (!fee) { container.innerHTML = ''; return; }
+container.innerHTML = '<div class="design-fee">' +
+'<span class="fee-amount">' + escapeHtml(fee.price) + '</span>' +
+'<span class="fee-text">' +
+'<span class="fee-title">' + escapeHtml(fee.title) + '</span>' +
+'<span class="fee-note">' + escapeHtml(fee.note) + '</span>' +
+'</span></div>';
 }
 
-var thumbImages = images.slice(0, 4);
-container.classList.add('is-carousel');
-container.innerHTML =
-'<div class="gallery-carousel" aria-label="MicroPatches product photo carousel">' +
-'<button class="gallery-nav gallery-prev" type="button" aria-label="Previous product photo" title="Previous product photo">&lsaquo;</button>' +
-'<figure class="gallery-stage">' +
-'<img class="gallery-stage-image" src="' + escapeHtml(images[0].src) + '" alt="' + escapeHtml(images[0].alt) + '">' +
-'<figcaption>' + escapeHtml(config.gallery.caption || images[0].alt) + '</figcaption>' +
-'</figure>' +
-'<button class="gallery-nav gallery-next" type="button" aria-label="Next product photo" title="Next product photo">&rsaquo;</button>' +
-'<div class="gallery-thumbs" role="list" aria-label="Choose featured product photo">' +
-thumbImages.map(function (image, index) {
-return '<button class="gallery-thumb' + (index === 0 ? ' is-active' : '') + '" type="button" role="listitem" aria-label="Show photo ' +
-(index + 1) + '" aria-current="' + (index === 0 ? 'true' : 'false') + '" data-gallery-index="' + index + '">' +
-'<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '" loading="lazy">' +
-'</button>';
-}).join('') +
-'</div>' +
+function renderPricingCards() {
+var container = document.querySelector('[data-config="pricingCards"]');
+if (!container) return;
+var items = getValue('pricingCards.items') || [];
+container.innerHTML = items.map(function (item) {
+return '<div class="price-card">' +
+'<span class="pc-name">' + escapeHtml(item.name) + '</span>' +
+'<span class="pc-price">' + escapeHtml(item.price) + '</span>' +
 '</div>';
+}).join('');
+}
 
+function renderProjects() {
+var container = document.querySelector('[data-config="recentProjects"]');
+if (!container) return;
+var items = getValue('recentProjects.items') || [];
+container.innerHTML = items.map(function (item) {
+return '<article class="project-card">' +
+'<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.alt || item.category) + '" loading="lazy">' +
+'<span class="project-tag">' + escapeHtml(item.category) + '</span>' +
+'</article>';
+}).join('');
+bindImageFallbacks(container);
+setupDots('recentProjects', container);
+}
+
+function renderTrustBadges() {
+var container = document.querySelector('[data-config="trustBadges"]');
+if (!container) return;
+var items = getValue('trustBadges.items') || [];
+container.innerHTML = items.map(function (item) {
+return '<li>' + escapeHtml(item) + '</li>';
+}).join('');
+}
+
+// Swipe indicator dots for a horizontal rail
+function setupDots(key, rail) {
+var dotsEl = document.querySelector('[data-dots-for="' + key + '"]');
+if (!dotsEl) return;
+var cards = Array.prototype.slice.call(rail.children);
+if (cards.length < 2) { dotsEl.innerHTML = ''; return; }
+
+dotsEl.innerHTML = cards.map(function (_, index) {
+return '<span' + (index === 0 ? ' class="is-active"' : '') + '></span>';
+}).join('');
+var dots = Array.prototype.slice.call(dotsEl.children);
+
+function updateActive() {
+var center = rail.scrollLeft + rail.clientWidth / 2;
 var activeIndex = 0;
-var stageImage = container.querySelector('.gallery-stage-image');
-var thumbs = Array.prototype.slice.call(container.querySelectorAll('.gallery-thumb'));
-
-function showImage(nextIndex) {
-activeIndex = (nextIndex + images.length) % images.length;
-stageImage.src = images[activeIndex].src;
-stageImage.alt = images[activeIndex].alt;
-thumbs.forEach(function (thumb, index) {
-var isActive = index === activeIndex;
-thumb.classList.toggle('is-active', isActive);
-thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+var closest = Infinity;
+cards.forEach(function (card, index) {
+var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+var distance = Math.abs(cardCenter - center);
+if (distance < closest) { closest = distance; activeIndex = index; }
+});
+dots.forEach(function (dot, index) {
+dot.classList.toggle('is-active', index === activeIndex);
 });
 }
 
-container.querySelector('.gallery-prev').addEventListener('click', function () {
-showImage(activeIndex - 1);
-});
-
-container.querySelector('.gallery-next').addEventListener('click', function () {
-showImage(activeIndex + 1);
-});
-
-thumbs.forEach(function (thumb) {
-thumb.addEventListener('click', function () {
-showImage(Number(thumb.getAttribute('data-gallery-index')));
-});
-});
-
-container.querySelectorAll('img').forEach(function (img) {
-safeImage(img, img.getAttribute('src'), img.getAttribute('alt'));
+var ticking = false;
+rail.addEventListener('scroll', function () {
+if (ticking) return;
+ticking = true;
+window.requestAnimationFrame(function () { updateActive(); ticking = false; });
 });
 }
 
 function renderFormOptions() {
 var productSelect = document.getElementById('productType');
-var artworkSelect = document.getElementById('artworkReferenceType');
-
 if (productSelect) {
-productSelect.innerHTML = '<option value="">Choose one</option>' + config.quoteForm.productTypes.map(function (option) {
-return '<option>' + escapeHtml(option) + '</option>';
-}).join('');
-}
-
-if (artworkSelect) {
-artworkSelect.innerHTML = '<option value="">Choose one</option>' + config.quoteForm.artworkReferenceTypes.map(function (option) {
+productSelect.innerHTML = '<option value="">Choose one</option>' + (config.quoteForm.productTypes || []).map(function (option) {
 return '<option>' + escapeHtml(option) + '</option>';
 }).join('');
 }
@@ -244,6 +213,7 @@ event.target.classList.remove('field-error');
 
 form.method = 'POST';
 form.action = formspreeEndpoint;
+form.enctype = 'multipart/form-data';
 
 form.addEventListener('submit', function (event) {
 form.querySelectorAll('.field-error').forEach(function (field) {
@@ -263,12 +233,27 @@ return;
 
 if (status) status.textContent = 'Submitting your request…';
 
-setTimeout(function() {
+setTimeout(function () {
 form.style.display = 'none';
 if (successEl) successEl.style.display = 'block';
 if (status) status.textContent = '';
 }, 800);
 });
+}
+
+// Hide the sticky CTA once the quote form is on screen
+function configureStickyCta() {
+var cta = document.querySelector('.sticky-cta');
+var form = document.getElementById('quote');
+if (!cta || !form || !('IntersectionObserver' in window)) return;
+
+var observer = new IntersectionObserver(function (entries) {
+entries.forEach(function (entry) {
+cta.classList.toggle('is-hidden', entry.isIntersecting);
+});
+}, { threshold: 0.12 });
+
+observer.observe(form);
 }
 
 function applyConfig() {
@@ -282,23 +267,19 @@ setMeta('meta[name="twitter:title"]', config.seo.ogTitle);
 setMeta('meta[name="twitter:description"]', config.seo.ogDescription);
 setMeta('meta[name="twitter:image"]', config.seo.socialPreviewImage);
 
-document.querySelector('link[rel="icon"]').href = config.seo.favicon;
+var favicon = document.querySelector('link[rel="icon"]');
+if (favicon && config.seo.favicon) favicon.href = config.seo.favicon;
 
 [
 'business.name',
-'business.tagline',
-'business.secondaryTagline',
-'business.shortDescription',
 'business.madeIn',
 'business.ownerNote',
-'pricingTransparency.headline',
-'pricingTransparency.intro',
-'pricingTransparency.note',
-'pricing.globalNote',
-'pricing.designFeeNote',
-'gallery.headline',
-'gallery.description',
-'quoteForm.intro',
+'hero.headline',
+'hero.subheadline',
+'productShowcase.heading',
+'pricingCards.heading',
+'recentProjects.heading',
+'trustBadges.heading',
 'quoteForm.warning',
 'quoteForm.consentText',
 'footer.privacyNote'
@@ -316,42 +297,18 @@ link.rel = 'noopener';
 });
 
 renderButtons();
-renderGallery();
-renderComparisonCards();
-renderPricingTabs();
+renderTrustRow();
+renderShowcase();
+renderDesignFee();
+renderPricingCards();
+renderProjects();
+renderTrustBadges();
 renderFormOptions();
 configureForm();
-configurePricingItems();
+configureStickyCta();
 }
 
-function configurePricingItems() {
-var items = document.querySelectorAll('.pricing-item[role="button"]');
-items.forEach(function (item) {
-var details = item.querySelector('.pricing-item-details');
-var chevron = item.querySelector('.item-chevron');
-if (!details) return;
-
-item.addEventListener('click', function () {
-var isHidden = details.hasAttribute('hidden');
-if (isHidden) {
-details.removeAttribute('hidden');
-if (chevron) chevron.classList.add('is-expanded');
-} else {
-details.setAttribute('hidden', '');
-if (chevron) chevron.classList.remove('is-expanded');
-}
-});
-
-item.addEventListener('keydown', function (event) {
-if (event.key === 'Enter' || event.key === ' ') {
-event.preventDefault();
-item.click();
-}
-});
-});
-}
-
-fetch('siteConfig.json?v=20260604-001', { cache: 'no-store' })
+fetch('siteConfig.json?v=20260604-redesign', { cache: 'no-store' })
 .then(function (response) { return response.json(); })
 .then(function (loadedConfig) {
 config = loadedConfig;

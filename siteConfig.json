@@ -8,6 +8,67 @@
 "madeIn": "Made in USA",
 "ownerNote": "Law enforcement owned and operated"
 },
+"hero": {
+"headline": "Your Patch. Now Micro.",
+"subheadline": "Custom keychains, magnets, challenge coins, pins, and flexible patches — made from agency patches, military insignia, fire department artwork, and your own custom designs.",
+"trustRow": [
+"Made in USA",
+"No Minimum Orders",
+"Active Law Enforcement Owned",
+"Phoenix, Arizona"
+]
+},
+"productShowcase": {
+"heading": "What we make",
+"items": [
+{ "name": "MicroKeychains", "price": "From $13.99", "image": "assets/products/product_fhp_keychain.jpg", "alt": "Florida Highway Patrol raised texture MicroKeychain" },
+{ "name": "MicroMagnets", "price": "From $14.99", "image": "assets/products/product_lapd_keychain.jpg", "alt": "Los Angeles Police raised texture MicroMagnet" },
+{ "name": "MicroPins", "price": "From $9.99", "image": "assets/products/product_phoenix_pd_keychain.jpg", "alt": "Phoenix Police raised texture MicroPin" },
+{ "name": "MicroCharms", "price": "From $9.99", "image": "assets/products/product_pomona_pink_keychain.jpg", "alt": "Pomona Police pink raised texture MicroCharm" },
+{ "name": "Flexible Patches", "price": "From $12.99", "image": "assets/products/product_75th_ranger_keychain.jpg", "alt": "75th Ranger Regiment flexible raised texture patch" },
+{ "name": "Challenge Coins", "price": "From $19.99", "image": "assets/products/product_airborne_keychain.jpg", "alt": "82nd Airborne raised texture challenge coin" }
+]
+},
+"pricingCards": {
+"heading": "Pricing",
+"designFee": {
+"title": "Design Fee",
+"price": "$25",
+"note": "One-time setup fee. May be waived on qualifying bulk orders."
+},
+"items": [
+{ "name": "MicroCharms", "price": "From $9.99" },
+{ "name": "MicroPins", "price": "From $9.99" },
+{ "name": "Flexible Patches", "price": "From $12.99" },
+{ "name": "MicroKeychains", "price": "From $13.99" },
+{ "name": "MicroMagnets", "price": "From $14.99" },
+{ "name": "Challenge Coins", "price": "From $19.99" }
+]
+},
+"recentProjects": {
+"heading": "Recent work",
+"items": [
+{ "category": "Police", "image": "assets/products/product_chicago_pd_keychain.jpg", "alt": "Chicago Police raised texture keychain" },
+{ "category": "Fire", "image": "assets/products/product_lafd_keychain.jpg", "alt": "Los Angeles Fire Department raised texture keychain" },
+{ "category": "Military", "image": "assets/products/product_airborne_keychain.jpg", "alt": "82nd Airborne raised texture keychain" },
+{ "category": "Police", "image": "assets/products/product_nypd_keychain.jpg", "alt": "New York Police Department raised texture keychain" },
+{ "category": "Custom", "image": "assets/products/product_pomona_pink_keychain.jpg", "alt": "Pomona Police pink custom raised texture keychain" },
+{ "category": "Fire", "image": "assets/products/product_fdny_keychain.jpg", "alt": "New York Fire Department raised texture keychain" },
+{ "category": "Military", "image": "assets/products/product_75th_ranger_keychain.jpg", "alt": "75th Ranger Regiment raised texture keychain" },
+{ "category": "Police", "image": "assets/products/product_boston_pd_keychain.jpg", "alt": "Boston Police raised texture keychain" }
+]
+},
+"trustBadges": {
+"heading": "Why MicroPatches",
+"items": [
+"Active Arizona Police Officer Owned",
+"Made in Phoenix, Arizona",
+"Made in USA",
+"No Minimum Orders",
+"No Mold Fees",
+"Fast Turnaround"
+]
+},
 "seo": {
 "pageTitle": "MicroPatches | Custom Raised Texture Products",
 "metaDescription": "MicroPatches creates USA made custom raised texture products with no minimums, no mold fee, and clear pricing.",
@@ -29,7 +90,7 @@
 "futureWebsiteEnabled": false
 },
 "buttons": {
-"customQuote": "Request a Custom Quote",
+"customQuote": "Request Quote",
 "etsy": "Shop Etsy",
 "instagram": "Instagram",
 "tiktok": "TikTok",
@@ -474,18 +535,9 @@
 "MicroMagnets",
 "MicroCharms",
 "MicroPins",
-"Flexible Patch",
-"Challenge Coin",
+"Flexible Patches",
+"Challenge Coins",
 "Other custom request"
-],
-"artworkReferenceTypes": [
-"Patch",
-"Badge",
-"Logo",
-"Emblem",
-"Unit artwork",
-"Existing product photo",
-"Other"
 ],
 "consentText": "I understand this is a quote request, not an automatic order, and MicroPatches will review my request before confirming availability, pricing, or production.",
 "formspreeEndpoint": "https://formspree.io/f/mqednono"
